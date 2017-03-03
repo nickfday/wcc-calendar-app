@@ -34,16 +34,13 @@ class App extends Component {
 	getProjects(){
     this.setState({projects: [
       {
-        title: 'Business Website',
-        category: 'Web Deisgn'
+        title: 'Home',
       },
       {
-        title: 'Social App',
-        category: 'Mobile Development'
+        title: 'Exercise',
       },
       {
-        title: 'Ecommerce Shopping Cart',
-        category: 'Web Development'
+        title: 'Workout',
       }
     ]});
   }
