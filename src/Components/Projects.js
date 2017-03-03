@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import NavigationItem from './NavigationItem';
+import ProjectItem from './ProjectItem';
 
+class Projects extends Component {
 
-class Navigation extends Component {
-
-	render() {
-
-		return (
-				<nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-					<NavigationItem />
+  render() {
+    let projectItems;
+    if(this.props.projects){
+      projectItems = this.props.projects.map(project => {
+        //console.log(project);
+        return (
+          <ProjectItem project={project} />
+        );
+      });
+    }
+    return (
+        <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
 					<button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
 					</button>
@@ -16,15 +22,7 @@ class Navigation extends Component {
 
 					<div className="collapse navbar-collapse" id="navbarsExampleDefault">
 					<ul className="navbar-nav mr-auto">
-						<li className="nav-item active">
-							<a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">Link</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link disabled" href="#">Disabled</a>
-						</li>
+						{projectItems}
 					</ul>
 					<form className="form-inline my-2 my-lg-0">
 						<input className="form-control mr-sm-2" type="text" placeholder="Search" />
@@ -32,8 +30,13 @@ class Navigation extends Component {
 					</form>
 				</div>
 			</nav>
-		);
-	}
+    );
+  }
 }
 
-export default Navigation;
+Projects.propTypes = {
+  projects: React.PropTypes.array,
+  onDelete: React.PropTypes.func
+}
+
+export default Projects;

@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import $ from 'jquery';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
-import Navigation from './Components/Navigation';
+import Projects from './Components/Projects';
 import Todos from './Components/Todos';
 
 class App extends Component {
@@ -60,7 +60,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Navigation />
+				<Projects projects={this.state.projects} />
 				<Todos todos={this.state.todos} />
 		</div>
 		);

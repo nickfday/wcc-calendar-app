@@ -13,7 +13,7 @@ class Todos extends Component {
       });
     }
     return (
-      <div className="Todos">
+      <div className="Todos container">
         <h3>Todo List</h3>
         {todoItems}
       </div>
