@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import $ from 'jquery';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router'
 import Projects from './Components/Projects';
 import Todos from './Components/Todos';
 import Users from './Components/Users';
@@ -60,7 +60,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Router history={hashHistory}>
+				<Router history={browserHistory}>
 					<Route path="/user" component={Users}></Route>
   			</Router>
 				<Projects projects={this.state.projects} />
