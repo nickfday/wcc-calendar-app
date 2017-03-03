@@ -3,8 +3,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import $ from 'jquery';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import Projects from './Components/Projects';
 import Todos from './Components/Todos';
+import Users from './Components/Users';
+
 
 class App extends Component {
 	constructor(){
@@ -57,6 +60,9 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<Router history={hashHistory}>
+					<Route path="/user" component={Users}></Route>
+  			</Router>
 				<Projects projects={this.state.projects} />
 				<Todos todos={this.state.todos} />
 		</div>
