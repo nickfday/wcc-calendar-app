@@ -12,9 +12,7 @@ class App extends Component {
 	constructor(){
 		super();
 		this.state = {
-			todos:[],
-		  projects: [],
-
+		  projects: []
 		}
 	}
 
@@ -36,7 +34,6 @@ class App extends Component {
 
 	componentWillMount(){
     this.getProjects();
-    //this.getTodos();
   }
 
 
