@@ -4,7 +4,6 @@ import './App.css';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import { Link } from 'react-router'
 import Projects from './Components/Projects';
-//import Layout from './Components/Layout';
 import Home from './Components/Home';
 
 
@@ -20,14 +19,15 @@ class App extends Component {
     this.setState({projects: [
       {
         title: 'Home',
-        link: 'home'
+        link: '/'
       },
       {
         title: 'Exercise',
-        link: 'user'
+        link: 'users'
       },
       {
-        title: 'Workout'
+        title: 'Workout',
+        link: 'exercise'
       }
     ]});
   }
