@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Todos from './Components/Todos';
+import $ from 'jquery';
+import Todos from './Todos';
+
 
 class Exercise extends Component {
 	constructor(){
@@ -35,7 +37,9 @@ class Exercise extends Component {
 
   render() {
   	return(
-  		<Todos />
+  		<div>
+  		<Todos todos={this.state.todos} />
+  		</div>
   	)
   }
 

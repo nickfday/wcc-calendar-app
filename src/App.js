@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import $ from 'jquery';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import { Link } from 'react-router'
 import Projects from './Components/Projects';
 //import Layout from './Components/Layout';
-import Todos from './Components/Todos';
-import Users from './Components/Users';
 import Home from './Components/Home';
 
 

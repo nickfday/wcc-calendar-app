@@ -10,6 +10,7 @@ import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import Projects from './Components/Projects';
 import Layout from './Components/Layout';
 import Todos from './Components/Todos';
+import Exercise from './Components/Exercise';
 import Users from './Components/Users';
 import Home from './Components/Home';
 
@@ -20,6 +21,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
      	<Route path="/users" component={Users}/>
+     	<Route path="/exercise" component={Exercise}/>
       {/* make them children of `App` */}
       </Route>
   </Router>
