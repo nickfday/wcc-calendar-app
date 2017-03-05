@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 
-class Users extends Component {
+class Home extends Component {
   render() {
 
     return (
     	<div>
-    	<h1>HELLO USER</h1>
-    	<h1>HELLO USER</h1>
+    	<h1>HELLO HOME</h1>
+    	<h1>HELLO HOME</h1>
     	</div>
     );
 
@@ -16,4 +16,4 @@ class Users extends Component {
 
 
 
-export default Users;
+export default Home;

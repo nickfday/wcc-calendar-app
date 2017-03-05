@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from "react-router";
 
 class ProjectItem extends Component {
   render() {
     return (
     	<li className="nav-item active">
-							<a className="nav-link" href="#">{this.props.project.title} <span class="sr-only"></span></a>
+							<a className="nav-link" href="#">{this.props.project.title} <span className="sr-only"></span></a>
 						</li>
     );
   }

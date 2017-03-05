@@ -3,69 +3,78 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import $ from 'jquery';
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
-import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router'
+import { Link } from 'react-router'
 import Projects from './Components/Projects';
+//import Layout from './Components/Layout';
 import Todos from './Components/Todos';
 import Users from './Components/Users';
+import Home from './Components/Home';
 
 
 class App extends Component {
 	constructor(){
 		super();
 		this.state = {
-			projects: [],
-			todos:[]
+			todos:[],
+		  projects: [],
+
 		}
 	}
 
-	getTodos(){
-    $.ajax({
-      url: 'https://jsonplaceholder.typicode.com/todos',
-      dataType:'json',
-      cache: false,
-      success: function(data){
-        this.setState({todos: data}, function(){
-          console.log(this.state);
-        });
-      }.bind(this),
-      error: function(xhr, status, err){
-        console.log(err);
-      }
-    });
-  }
-
-	getProjects(){
+	 getProjects(){
     this.setState({projects: [
       {
         title: 'Home',
+        link: 'home'
       },
       {
         title: 'Exercise',
+        link: 'user'
       },
       {
-        title: 'Workout',
+        title: 'Workout'
       }
     ]});
   }
 
 	componentWillMount(){
     this.getProjects();
-    this.getTodos();
+    //this.getTodos();
   }
 
+
+
+
+	// getTodos(){
+ //    $.ajax({
+ //      url: 'https://jsonplaceholder.typicode.com/todos',
+ //      dataType:'json',
+ //      cache: false,
+ //      success: function(data){
+ //        this.setState({todos: data}, function(){
+ //          console.log(this.state);
+ //        });
+ //      }.bind(this),
+ //      error: function(xhr, status, err){
+ //        console.log(err);
+ //      }
+ //    });
+ //  }
+
   componentDidMount(){
-    this.getTodos();
+  	this.getProjects();
+    //this.getTodos();
   }
+
+   			//<Todos todos={this.state.todos} />
+
 
 	render() {
 		return (
-			<div className="App">
-				<Router history={browserHistory}>
-					<Route path="/user" component={Users}></Route>
-  			</Router>
-				<Projects projects={this.state.projects} />
-				<Todos todos={this.state.todos} />
-		</div>
+			 <div>
+			 {this.props.children || <Home/>}
+    	<Projects projects={this.state.projects} />
+    	</div>
 		);
 	}
 }
