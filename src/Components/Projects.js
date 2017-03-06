@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import ProjectItem from './ProjectItem';
+
 
 class Projects extends Component {
 
@@ -7,13 +9,13 @@ class Projects extends Component {
     let projectItems;
     if(this.props.projects){
       projectItems = this.props.projects.map(project => {
-        //console.log(project);
         return (
           <ProjectItem project={project} />
         );
       });
     }
     return (
+
         <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
 					<button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
