@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
-import { Link } from 'react-router'
 import Projects from './Components/Projects';
 import Home from './Components/Home';
 
