@@ -13,7 +13,7 @@ class ExerciseView extends Component {
 
 	getTodos(){
     $.ajax({
-      url: 'https://jsonplaceholder.typicode.com/todos',
+      url: 'http://fitnessremoted7.dev/api/rest/views/exercise.json',
       dataType:'json',
       cache: false,
       success: function(data){

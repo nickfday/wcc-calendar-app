@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Table } from 'reactstrap';
+
 import ExerciseItem from './ExerciseItem';
 
 class Exercise extends Component {
@@ -13,10 +15,25 @@ class Exercise extends Component {
       });
     }
     return (
-      <div className="Todos container">
-        <h3>Todo List</h3>
-        {todoItems}
-      </div>
+    	<div className="content exercise-list container">
+    	<h1>Exercises</h1>
+
+     	<Table responsive>
+     	<thead>
+           <tr>
+             <th>Image</th>
+             <th>Name</th>
+             <th>Primary Muscle</th>
+             <th>Secondary Muscles</th>
+             <th>Equipment</th>
+           </tr>
+         </thead>
+         <tbody>
+     			{todoItems}
+     	  	</tbody>
+     	</Table>
+
+     	</div>
     );
   }
 }
