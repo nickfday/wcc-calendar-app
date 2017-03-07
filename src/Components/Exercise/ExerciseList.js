@@ -4,7 +4,7 @@ import { Table } from 'reactstrap';
 class ExerciseItem extends Component {
 	render() {
 		return (
-			<div>
+			<tbody>
 				 <tr>
             <td><img src="http://fitnessremoted7.dev/sites/default/files/stock-photo-48646366-bodybuilder-performing-dips.jpg" alt="" /></td>
             <td>Bench Press</td>
@@ -19,7 +19,7 @@ class ExerciseItem extends Component {
             <td>Triceps</td>
             <td>Beginner</td>
           </tr>
-			</div>
+			</tbody>
 			)
 	}
 }
@@ -41,11 +41,9 @@ class ExerciseList extends Component {
             <th>Equipment</th>
           </tr>
         </thead>
-        <tbody>
 
        <ExerciseItem />
 
-        </tbody>
       </Table>
       </div>
     );
