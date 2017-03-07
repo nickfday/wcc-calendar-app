@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+//import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import { Link } from 'react-router'
 import Projects from './Components/Projects';
 import Home from './Components/Home';
@@ -11,7 +11,8 @@ class App extends Component {
 	constructor(){
 		super();
 		this.state = {
-		  projects: []
+		  projects: [],
+		  exercises: []
 		}
 	}
 
@@ -23,44 +24,35 @@ class App extends Component {
       },
       {
         title: 'Exercise',
-        link: 'users'
+        link: 'exercise'
       },
       {
         title: 'Workout',
-        link: 'exercise'
+        link: 'workout'
       }
     ]});
   }
 
-	componentWillMount(){
-    this.getProjects();
+  getExercises(){
+  	this.setState({exercises: [
+  		{
+  			title: 'Bench Press'
+  		},
+  		{
+  			title: 'Shoulder Press'
+  		}]}
+  		)
   }
 
-
-
-
-	// getTodos(){
- //    $.ajax({
- //      url: 'https://jsonplaceholder.typicode.com/todos',
- //      dataType:'json',
- //      cache: false,
- //      success: function(data){
- //        this.setState({todos: data}, function(){
- //          console.log(this.state);
- //        });
- //      }.bind(this),
- //      error: function(xhr, status, err){
- //        console.log(err);
- //      }
- //    });
- //  }
+	componentWillMount(){
+    this.getProjects();
+    this.getExercises();
+  }
 
   componentDidMount(){
   	this.getProjects();
-    //this.getTodos();
+  	this.getExercises();
   }
-
-   			//<Todos todos={this.state.todos} />
 
 
 	render() {

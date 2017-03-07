@@ -3,7 +3,7 @@ import $ from 'jquery';
 import Todos from './Todos';
 
 
-class Exercise extends Component {
+class ToDoView extends Component {
 	constructor(){
 		super();
 		this.state = {
@@ -46,4 +46,4 @@ class Exercise extends Component {
 
 }
 
-export default Exercise;
+export default ToDoView;
