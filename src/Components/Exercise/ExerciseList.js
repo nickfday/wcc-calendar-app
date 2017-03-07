@@ -4,50 +4,9 @@ import { Table } from 'reactstrap';
 
 class ExerciseList extends Component {
 
-	constructor(){
-		super();
-		this.state = {
-		  exercise: []
-		}
-	}
-
-	 getExercise(){
-    this.setState({exercise: [
-      {
-        title: 'Bench Press',
-      }
-    ]});
-  }
-
-	componentWillMount(){
-    this.getExercise();
-  }
-
-  componentDidMount(){
-  	this.getExercise();
-  }
-
-  render() {
-
-  	let exerciseItems;
-
-  	return (
-  		<div>
-  			HELLO from ExerciseList
-  		</div>
-  		)
-  }
-
-}
-
-
-
-class Users extends Component {
-
     render() {
     return (
     	<div className="content exercise-list">
-    	    	<ExerciseList />
 
     	<Table responsive>
         <thead>
@@ -86,4 +45,4 @@ class Users extends Component {
 
 
 
-export default Users;
+export default ExerciseList;
