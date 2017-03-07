@@ -4,6 +4,8 @@ import './App.css';
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import Projects from './Components/Projects';
 import Home from './Components/Home';
+var Spinner = require('react-spinkit');
+
 
 
 class App extends Component {
