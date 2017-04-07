@@ -23,6 +23,10 @@ class Layout extends Component {
       {
         title: 'Workout',
         link: 'users'
+      },
+      {
+        title: 'Test',
+        link: 'test'
       }
     ]});
   }

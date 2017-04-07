@@ -21,8 +21,10 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
      	<Route path="/exercise" component={ExerciseList}/>
+     	<Route path="/exercise/:id" component={ExerciseSingle} data={ExerciseList.todos} />
      	<Route path="/workout" component={Workout} />
-     	<Route path="/exercise/813b0238-96f9x4db7-be0a-ca54f2c5c0df" component={ExerciseSingle}/>
+     	<Route path="/813b0238-96f9x4db7-be0a-ca54f2c5c0df" component={ExerciseSingle}/>
+     	<Route path="/test" component={ExerciseSingle} />
       {/* make them children of `App` */}
     </Route>
   </Router>

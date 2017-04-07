@@ -36,6 +36,7 @@ class ExerciseView extends Component {
   }
 
   render() {
+
   	return(
   		<div>
   		<Exercise todos={this.state.todos} />

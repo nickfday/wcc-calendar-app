@@ -7,7 +7,7 @@ class ExerciseItem extends Component {
     return (
     	<tr>
     		<td><img src={this.props.todo.image_path} alt="" /></td>
-    		<td><Link to={`/${this.props.todo.uuid}`}>{this.props.todo.title}</Link></td>
+    		<td><Link to={`/exercise/${this.props.todo.uuid}`}>{this.props.todo.title}</Link></td>
     		<td>{this.props.todo.primary_muscle}</td>
     		<td>{this.props.todo.secondary_muscle}</td>
     		<td>{this.props.todo.equipment}</td>
