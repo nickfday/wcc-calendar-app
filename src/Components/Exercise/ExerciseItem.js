@@ -4,13 +4,21 @@ import { Link } from "react-router";
 
 class ExerciseItem extends Component {
   render() {
+  	 const exercises = this.props.todo;
+
     return (
     	<tr>
-    		<td><img src={this.props.todo.image_path} alt="" /></td>
-    		<td><Link to={`/exercise/${this.props.todo.uuid}`}>{this.props.todo.title}</Link></td>
-    		<td>{this.props.todo.primary_muscle}</td>
-    		<td>{this.props.todo.secondary_muscle}</td>
-    		<td>{this.props.todo.equipment}</td>
+    		<td><img src={exercises.image_path} alt="" /></td>
+    		<td>
+    			<Link
+    				to={`/exercise/${exercises.uuid}`}
+    				className="item">
+    			{exercises.title}
+    			</Link>
+    		</td>
+    		<td>{exercises.primary_muscle}</td>
+    		<td>{exercises.secondary_muscle}</td>
+    		<td>{exercises.equipment}</td>
     	</tr>
 
     );

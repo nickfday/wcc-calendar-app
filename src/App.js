@@ -30,6 +30,10 @@ class App extends Component {
       {
         title: 'Workout',
         link: 'workout'
+      },
+       {
+        title: 'Cars',
+        link: 'cars'
       }
     ]});
   }

@@ -36,6 +36,7 @@ class ExerciseView extends Component {
   }
 
   render() {
+  	const exercise = this.props.route.data;
 
   	return(
   		<div>

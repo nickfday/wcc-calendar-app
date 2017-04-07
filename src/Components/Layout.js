@@ -27,6 +27,10 @@ class Layout extends Component {
       {
         title: 'Test',
         link: 'test'
+      },
+       {
+        title: 'Cars',
+        link: 'car'
       }
     ]});
   }
