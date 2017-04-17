@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
-import Projects from './Components/Projects';
+import NavList from './Components/NavList';
 import Home from './Components/Home';
 var Spinner = require('react-spinkit');
 
@@ -27,13 +27,13 @@ class App extends Component {
         title: 'Exercise',
         link: 'exercise'
       },
-      {
-        title: 'Workout',
-        link: 'workout'
-      },
        {
         title: 'Cars',
         link: 'cars'
+      },
+      {
+        title: 'Exercise New',
+        link: 'exercises'
       }
     ]});
   }
@@ -64,7 +64,7 @@ class App extends Component {
 		return (
 			 <div>
 			 {this.props.children || <Home/>}
-    	<Projects projects={this.state.projects} />
+    	<NavList projects={this.state.projects} />
     	</div>
 		);
 	}

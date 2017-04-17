@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import Exercise from './Exercise';
 
 
-class ExerciseView extends Component {
+class ExerciseHelper extends Component {
 	constructor(){
 		super();
 		this.state = {
@@ -29,23 +28,11 @@ class ExerciseView extends Component {
 
 	componentWillMount(){
     this.getTodos();
+    console.log('nick' + this.getTodos());
   }
 
   componentDidMount(){
     this.getTodos();
   }
 
-  render() {
-  	const exercise = this.props.route.data;
-
-  	return(
-  		<div>
-  		<Exercise todos={this.state.todos} />
-  		</div>
-  	)
-  }
-
-
-}
-
-export default ExerciseView;
+  export default ExerciseHelper;

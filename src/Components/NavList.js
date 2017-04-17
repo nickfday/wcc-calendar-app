@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
 
 
-class Projects extends Component {
+class NavList extends Component {
 
   render() {
-    let projectItems;
+    let NavItems;
     if(this.props.projects){
-      projectItems = this.props.projects.map(project => {
+      NavItems = this.props.projects.map(project => {
         //console.log(project);
         return (
           <ProjectItem project={project} />
@@ -24,7 +24,7 @@ class Projects extends Component {
 
 					<div className="collapse navbar-collapse" id="navbarsExampleDefault">
 					<ul className="navbar-nav mr-auto">
-						{projectItems}
+						{NavItems}
 					</ul>
 					<form className="form-inline my-2 my-lg-0">
 						<input className="form-control mr-sm-2" type="text" placeholder="Search" />
@@ -36,9 +36,9 @@ class Projects extends Component {
   }
 }
 
-Projects.propTypes = {
+NavList.propTypes = {
   projects: React.PropTypes.array,
   onDelete: React.PropTypes.func
 }
 
-export default Projects;
+export default NavList;

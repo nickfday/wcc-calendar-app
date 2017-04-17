@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Projects from './Projects';
+import NavList from './NavList';
 
 
 class Layout extends Component {
@@ -31,6 +31,10 @@ class Layout extends Component {
        {
         title: 'Cars',
         link: 'car'
+      },
+      {
+        title: 'Exercise New',
+        link: 'exercise'
       }
     ]});
   }

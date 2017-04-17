@@ -38,6 +38,10 @@ class ToDoView extends Component {
   render() {
   	return(
   		<div>
+  		<br/>
+  		<br/>
+  		<br/>
+  		<br/>
   		<Todos todos={this.state.todos} />
   		</div>
   	)

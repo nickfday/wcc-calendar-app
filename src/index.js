@@ -5,7 +5,6 @@ import App from './App';
 import './index.css';
 import './App.css';
 //import { Navbar, Jumbotron, Button, Navigation } from 'react-bootstrap';
-import Workout from './Components/ToDoView';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
 import ExerciseList from './Components/Exercise/ExerciseList';
@@ -13,6 +12,9 @@ import ExerciseSingle from './Components/Exercise/ExerciseSingle';
 
 import Car from './Components/Car/Car';
 import CarDetail from './Components/Car/CarDetail';
+
+import ExerciseNewSummary from './Components/ExerciseNew/ExerciseNewSummary';
+import ExerciseNewDetail from './Components/ExerciseNew/ExerciseNewDetail';
 
 
 const data = [
@@ -65,6 +67,33 @@ const data = [
     }
 ];
 
+const exerciseData = [
+    {
+        id: 1,
+        name: 'Bench Press',
+        primaryMuscle: 'Chest',
+        secondaryMuscle: 'Tricep',
+        image: 'http://fitnessremoted7.dev/sites/default/files/bench-nick.jpg',
+        equipment: 'Barbell, Bench'
+    },
+    {
+        id: 2,
+        name: 'Deadlift',
+        primaryMuscle: 'Back',
+        secondaryMuscle: 'Biceps',
+        image: 'http://fitnessremoted7.dev/sites/default/files/bench-nick.jpg',
+        equipment: 'Barbell'
+    },
+    {
+        id: 3,
+        name: 'Squat',
+        primaryMuscle: 'Quads',
+        secondaryMuscle: 'Hamstrings',
+        image: 'http://fitnessremoted7.dev/sites/default/files/bench-nick.jpg',
+        equipment: 'Rack, Barbell'
+    }
+];
+
 
 
 ReactDOM.render((
@@ -74,13 +103,16 @@ ReactDOM.render((
       <IndexRoute component={Home}/>
      	<Route path="/exercise" component={ExerciseList}/>
      	<Route path="/exercise/:id" component={ExerciseSingle} data={ExerciseList.todos} />
-     	<Route path="/workout" component={Workout} />
      	<Route path="/813b0238-96f9x4db7-be0a-ca54f2c5c0df" component={ExerciseSingle}/>
      	<Route path="/test" component={ExerciseSingle} />
       {/* make them children of `App` */}
        <Route path="/cars" component={Car} data={data}/>
             {/* Parameter route*/}
        <Route path="/cars/:id" component={CarDetail} data={data}/>
+
+       {/*<Route path="/exercisenew" component={ExerciseNew} data={exerciseData}/> */}
+       <Route path="/exercises" component={ExerciseNewSummary} data={exerciseData}/>
+       <Route path="/exercises/:id" component={ExerciseNewDetail} data={exerciseData}/>
     </Route>
   </Router>
   <Footer/>

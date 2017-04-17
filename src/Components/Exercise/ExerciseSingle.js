@@ -6,9 +6,15 @@ class ExerciseSingle extends Component {
 	constructor(){
 		super();
 		this.state = {
-			exercises:[]
+			remoteexercises:[]
 		}
 	}
+
+	getInitialState() {
+    return {
+      remoteexercises: []
+    }
+  }
 
 	getTodos(){
     $.ajax({
@@ -16,7 +22,8 @@ class ExerciseSingle extends Component {
       dataType:'json',
       cache: false,
       success: function(data){
-        this.setState({exercises: data}, function(){
+        this.setState({remoteexercises: data}, function(){
+          console.log('success');
           console.log(this.state);
         });
       }.bind(this),
@@ -26,19 +33,13 @@ class ExerciseSingle extends Component {
     });
   }
 
-	componentWillMount(){
-    this.getTodos();
-  }
+	// componentWillMount(){
+ //    this.getTodos();
+ //  }
 
-  componentDidMount(){
-    this.getTodos();
-  }
-
-
-
-
-
-
+ //  componentDidMount(){
+ //    this.getTodos();
+ //  }
 
 	render() {
 
@@ -54,8 +55,13 @@ class ExerciseSingle extends Component {
       },
     ]
 
-		  	//working old
+
 		  	const exercises = data;
+		  	//const exercises = this.state.remoteexercises;
+		  	//const exercises = this.props.remoteexercises;
+
+		  	console.log('Nick' + exercises);
+
         //console.log(exercisesData);
         // Car Id from param
         const id = this.props.params.id;
@@ -66,29 +72,6 @@ class ExerciseSingle extends Component {
                 return exercise;
             }
         });
-
-
-
-     	// const exercisesData = this.state.exercises;
-     	// const id = this.props.params.id;
-
-     	// console.log('Exercises here:' + exercisesData);
-
-     	// //filter
-
-     	// const myExercise = exercisesData.filter(myExercise => {
-     	// 	if (myExercise.uuid == id) {
-     	// 		return myExercise;
-     	// 	}
-     	// })
-
-     	// console.log('hello: ' + myExercise);
-
-
-
-
-
-
 
 		return (
 			//working old

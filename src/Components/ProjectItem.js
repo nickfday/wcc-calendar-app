@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
 
-class ProjectItem extends Component {
+class NavItem extends Component {
   render() {
     return (
     	<li className="nav-item active">
@@ -11,9 +11,9 @@ class ProjectItem extends Component {
   }
 }
 
-ProjectItem.propTypes = {
+NavItem.propTypes = {
   project: React.PropTypes.object,
   onDelete: React.PropTypes.func
 }
 
-export default ProjectItem;
+export default NavItem;

@@ -8,7 +8,6 @@ class Exercise extends Component {
     let todoItems;
     if(this.props.todos){
       todoItems = this.props.todos.map(todo => {
-        //console.log(project);
         return (
           <ExerciseItem key={todo.title} todo={todo} />
         );
