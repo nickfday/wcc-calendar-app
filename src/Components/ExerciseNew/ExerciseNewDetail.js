@@ -77,7 +77,7 @@ class ExerciseNewDetail extends Component {
 		            <div className="col-sm-2">
 		            	<div className="sticky">
 										<div id="innerMenu">
-								          <Scrollspy items={ ['video', 'description', 'howToPerform', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current">
+								          <Scrollspy items={ ['video', 'description', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current" offset={-60}>
 								          <li><a href='#video'>Video</a></li>
 								          <li><a href='#descriptionHeader'>Description</a></li>
 								          <li><a href='#howToPerformHeader'>How to Perform</a></li>
