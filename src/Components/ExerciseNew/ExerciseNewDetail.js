@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import ScrollableAnchor from 'react-scrollable-anchor'
+import { configureAnchors } from 'react-scrollable-anchor'
+import { Scrollspy } from 'react-scrollspy'
+// var Scrollspy = require('react-scrollspy').Scrollspy;
 
 class ExerciseNewDetail extends Component {
     render(){
@@ -14,35 +18,98 @@ class ExerciseNewDetail extends Component {
             }
         });
 
+        configureAnchors({offset: -60, scrollDuration: 200})
+
         return (
             <div className="content exercise-detail container">
-                <h1>{exercise[0].name}</h1>
+            	<div className="row">
+		            <div className="col-sm-10">
+		                <h1>{exercise[0].name}</h1>
+		                <section id='video' className="page-header">
+										<ScrollableAnchor id={'videoHeader'}><h3>Video</h3></ScrollableAnchor>
+			                <div className="embed-responsive embed-responsive-16by9">
+			  								<iframe width="560" height="315" src={exercise[0].video} frameborder="0" allowfullscreen></iframe>
+											</div>
+										</section>
+										<dl className="dl-horizontal">
+											<dt>Primary Muscle</dt>
+											<dd>{exercise[0].primaryMuscle}</dd>
+											<dt>Secondary Muscle</dt>
+											<dd>{exercise[0].secondaryMuscle}</dd>
+											<dt>Equipment</dt>
+											<dd>{exercise[0].equipment}</dd>
+										</dl>
 
-                <div className="embed-responsive embed-responsive-16by9">
-  								<iframe width="560" height="315" src={exercise[0].video} frameborder="0" allowfullscreen></iframe>
-								</div>
+										<section id='description' className="page-header">
+										<ScrollableAnchor id={'descriptionHeader'}><h3>Description</h3></ScrollableAnchor>
+						        <p>{exercise[0].body}</p>
+						        </section>
 
-								<dl className="dl-horizontal">
-									<dt>Primary Muscle</dt>
-									<dd>{exercise[0].primaryMuscle}</dd>
-									<dt>Secondary Muscle</dt>
-									<dd>{exercise[0].secondaryMuscle}</dd>
-									<dt>Equipment</dt>
-									<dd>{exercise[0].equipment}</dd>
-								</dl>
+						        <section id='howToPerform' className="page-header">
+										<ScrollableAnchor id={'howToPerformHeader'}><h3>How to Perform</h3></ScrollableAnchor>
+						        <p>{exercise[0].instructions}</p>
+						        </section>
 
-								<h3 className="page-header">Description</h3>
-								<p>{exercise[0].body}</p>
-								<h3 className="page-header">How to Perform</h3>
-								<p>{exercise[0].instructions}</p>
-								<h3 className="page-header">Facts</h3>
-								<p>{exercise[0].facts}</p>
-								<h3 className="page-header">Strength Standards</h3>
-								<h3 className="page-header">Related Articles</h3>
-								<p>{exercise[0].relatedArticles}</p>
-								<h3 className="page-header">Related Exercises</h3>
-								<p>{exercise[0].relatedExercises}</p>
+						        <section id='facts' className="page-header">
+										<ScrollableAnchor id={'factsHeader'}><h3>Facts</h3></ScrollableAnchor>
+						        <p>{exercise[0].facts}</p>
+						        </section>
+
+						        <section id='strengthStandards' className="page-header">
+										<ScrollableAnchor id={'strengthStandardsHeader'}><h3>Strength Standards</h3></ScrollableAnchor>
+						        <p>Strength Standards</p>
+						        </section>
+
+						        <section id='relatedArticles' className="page-header">
+										<ScrollableAnchor id={'relatedArticlesHeader'}><h3>Related Articles</h3></ScrollableAnchor>
+						        <p>{exercise[0].relatedArticles}</p>
+						        </section>
+
+						        <section id='relatedExercises' className="page-header">
+										<ScrollableAnchor id={'relatedExercisesHeader'}><h3>Related Exercises</h3></ScrollableAnchor>
+						        <p>{exercise[0].relatedExercises}</p>
+						        </section>
+
+
+
+		            </div>
+
+		            <div className="col-sm-2">
+		            	<div className="sticky">
+										<div id="innerMenu">
+								          <Scrollspy items={ ['video', 'description', 'howToPerform', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current">
+								          <li><a href='#video'>Video</a></li>
+								          <li><a href='#descriptionHeader'>Description</a></li>
+								          <li><a href='#howToPerformHeader'>How to Perform</a></li>
+								          <li><a href='#factsHeader'>Facts</a></li>
+								          <li><a href='#strengthStandardsHeader'>Strength Standards</a></li>
+								          <li><a href='#relatedArticlesHeader'>Related Articles</a></li>
+								          <li><a href='#relatedExercisesHeader'>Related Exercises</a></li>
+											  </Scrollspy>
+							      </div>
+							    </div>
+		            </div>
+
             </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
         );
     }
 }

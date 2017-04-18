@@ -10,3 +10,11 @@
 	height: 100px;
 	width: 100px;
 }
+
+.sticky {
+  position: fixed;
+}
+
+.is-current {
+	text-decoration: underline;
+}
