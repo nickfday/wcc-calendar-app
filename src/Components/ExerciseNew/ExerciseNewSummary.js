@@ -31,7 +31,7 @@ class ExerciseNewSummary extends Component {
 		return (
 			<div className="content exercise-list container">
 				<h1>Exercises</h1>
-				<Table responsive>
+				<table className="table table-condensed table-bordered table-striped">
 					<thead>
 						<tr>
 					  	<th>Image</th>
@@ -56,7 +56,7 @@ class ExerciseNewSummary extends Component {
 							<td>{exercises.equipment}</td>
 							</tr>*/}
 					  </tbody>
-					     	</Table>
+					     	</table>
 					     	</div>
             )
 	}
