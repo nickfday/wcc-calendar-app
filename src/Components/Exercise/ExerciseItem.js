@@ -10,11 +10,12 @@ class ExerciseItem extends Component {
     	<tr>
     		<td><img src={exercises.image_path} alt="" /></td>
     		<td>
-    			<Link
-    				to={`/exercise/${exercises.uuid}`}
-    				className="item">
-    			{exercises.title}
-    			</Link>
+    		 <Link to = {{
+              pathname: `/exercise/${exercises.uuid}`,
+              state: { exercise: exercises
+                     }
+
+            }}>{exercises.title}</Link>
     		</td>
     		<td>{exercises.primary_muscle}</td>
     		<td>{exercises.secondary_muscle}</td>

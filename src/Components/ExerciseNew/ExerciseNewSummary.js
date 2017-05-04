@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
 import { Table } from 'reactstrap';
+import ExerciseGetJson from './ExerciseGetJson';
 
 class ExerciseNewSummary extends Component {
 	render() {
@@ -42,8 +43,10 @@ class ExerciseNewSummary extends Component {
 					  </tr>
 					 </thead>
 					 <tbody>
+					 {/*< ExerciseGetJson />*/}
+
 					 { exerciseNode }
-					 {/*<ExerciseNewRow />*/}
+
 					 		{/*<tr>
 								<td><img src={exercises.image_path} alt="" /></td>
 								<td><Link to={`/exercise/${exercises.uuid}`}

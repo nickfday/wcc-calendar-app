@@ -16,6 +16,11 @@ import CarDetail from './Components/Car/CarDetail';
 import ExerciseNewSummary from './Components/ExerciseNew/ExerciseNewSummary';
 import ExerciseNewDetail from './Components/ExerciseNew/ExerciseNewDetail';
 
+import ExerciseGetJson from './Components/ExerciseNew/ExerciseGetJson';
+import FetchDemo from './Components/ExerciseNew/FetchDemo';
+
+
+
 
 const data = [
     {
@@ -101,7 +106,6 @@ const exerciseData = [
 ];
 
 
-
 ReactDOM.render((
 	<div>
   <Router history={browserHistory}>
@@ -122,6 +126,7 @@ ReactDOM.render((
     </Route>
   </Router>
   <Footer/>
+
   </div>
   ),
   document.getElementById('root')

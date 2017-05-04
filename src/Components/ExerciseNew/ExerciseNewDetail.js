@@ -26,7 +26,7 @@ class ExerciseNewDetail extends Component {
 		            <div className="col-sm-10">
 		                <h1>{exercise[0].name}</h1>
 		                <section id='video' className="page-header">
-										<ScrollableAnchor id={'videoHeader'}><h3>Video</h3></ScrollableAnchor>
+										<ScrollableAnchor id={'videoHeader'}><span></span></ScrollableAnchor>
 			                <div className="embed-responsive embed-responsive-16by9">
 			  								<iframe width="560" height="315" src={exercise[0].video} frameborder="0" allowfullscreen></iframe>
 											</div>
@@ -77,14 +77,14 @@ class ExerciseNewDetail extends Component {
 		            <div className="col-sm-2">
 		            	<div className="sticky">
 										<div id="innerMenu">
-								          <Scrollspy items={ ['video', 'description', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current" offset={-60}>
-								          <li><a href='#video'>Video</a></li>
-								          <li><a href='#descriptionHeader'>Description</a></li>
-								          <li><a href='#howToPerformHeader'>How to Perform</a></li>
-								          <li><a href='#factsHeader'>Facts</a></li>
-								          <li><a href='#strengthStandardsHeader'>Strength Standards</a></li>
-								          <li><a href='#relatedArticlesHeader'>Related Articles</a></li>
-								          <li><a href='#relatedExercisesHeader'>Related Exercises</a></li>
+								          <Scrollspy items={ ['video', 'description', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current" offset={-60} className="nav nav-pills flex-column">
+								          <li className="nav-item"><a href='#videoHeader' className="nav-link">Video</a></li>
+								          <li className="nav-item"><a href='#descriptionHeader' className="nav-link">Description</a></li>
+								          <li className="nav-item"><a href='#howToPerformHeader' className="nav-link">How to Perform</a></li>
+								          <li className="nav-item"><a href='#factsHeader' className="nav-link">Facts</a></li>
+								          <li className="nav-item"><a href='#strengthStandardsHeader' className="nav-link">Strength Standards</a></li>
+								          <li className="nav-item"><a href='#relatedArticlesHeader' className="nav-link">Related Articles</a></li>
+								          <li className="nav-item"><a href='#relatedExercisesHeader' className="nav-link">Related Exercises</a></li>
 											  </Scrollspy>
 							      </div>
 							    </div>

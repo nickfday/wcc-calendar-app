@@ -15,6 +15,13 @@
   position: fixed;
 }
 
-.is-current {
-	text-decoration: underline;
+.is-current a {
+	color: #fff;
+  cursor: default;
+  background-color: #0275d8;
+}
+
+.exercise-detail ol {
+	margin-left: 0;
+	padding-left: 16px;
 }
