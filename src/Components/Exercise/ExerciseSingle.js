@@ -20,7 +20,7 @@ class ExerciseNewDetail extends Component {
 		                <section id='video' className="page-header">
 										<ScrollableAnchor id={'videoHeader'}><span></span></ScrollableAnchor>
 			                <div className="embed-responsive embed-responsive-16by9">
-			  								<iframe width="560" height="315" src={exercises.video_url} frameborder="0" allowfullscreen></iframe>
+			  								<iframe width="560" height="315" src={exercises.video_url} frameBorder="0" allowFullScreen></iframe>
 											</div>
 										</section>
 										<dl className="dl-horizontal">

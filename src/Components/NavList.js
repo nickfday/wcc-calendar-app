@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProjectItem from './ProjectItem';
+import NavItem from './NavItem';
 
 
 class NavList extends Component {
@@ -10,7 +10,7 @@ class NavList extends Component {
       NavItems = this.props.projects.map(project => {
         //console.log(project);
         return (
-          <ProjectItem project={project} key={project.title} />
+          <NavItem project={project} key={project.title} />
         );
       });
     }
