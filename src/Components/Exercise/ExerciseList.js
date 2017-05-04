@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import Exercise from './Exercise';
+import { Table } from 'reactstrap';
+
+import ExerciseRow from './ExerciseRow';
 
 
-class ExerciseView extends Component {
+class ExerciseList extends Component {
 	constructor(){
 		super();
 		this.state = {
@@ -11,13 +13,13 @@ class ExerciseView extends Component {
 		}
 	}
 
-	getTodos(){
+	getExercises(){
     $.ajax({
       url: 'http://fitnessremoted7.dev/api/rest/views/exercise.json',
       dataType:'json',
       cache: false,
       success: function(data){
-        this.setState({todos: data}, function(){
+        this.setState({exercises: data}, function(){
           console.log(this.state);
         });
       }.bind(this),
@@ -28,24 +30,37 @@ class ExerciseView extends Component {
   }
 
 	componentWillMount(){
-    this.getTodos();
+    this.getExercises();
   }
 
   componentDidMount(){
-    this.getTodos();
+    this.getExercises();
   }
 
   render() {
-  	const exercise = this.props.route.data;
 
   	return(
-  		<div>
-  		<Exercise todos={this.state.todos} />
-  		</div>
+  		<div className="content exercise-list container">
+    		<h1>Exercises</h1>
+	     	<Table responsive>
+	     	<thead>
+	           <tr>
+	             <th>Image</th>
+	             <th>Name</th>
+	             <th>Primary Muscle</th>
+	             <th>Secondary Muscles</th>
+	             <th>Equipment</th>
+	           </tr>
+	         </thead>
+	         <tbody>
+	     			{this.state.exercises.map(exercise =>
+         			<ExerciseRow exercises={exercise} key={exercise.uuid} />
+       			)}
+	     	  	</tbody>
+	     	</Table>
+     	</div>
   	)
   }
-
-
 }
 
-export default ExerciseView;
+export default ExerciseList;

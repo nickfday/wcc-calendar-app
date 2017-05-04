@@ -10,7 +10,7 @@ class NavList extends Component {
       NavItems = this.props.projects.map(project => {
         //console.log(project);
         return (
-          <ProjectItem project={project} />
+          <ProjectItem project={project} key={project.title} />
         );
       });
     }

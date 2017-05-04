@@ -27,14 +27,6 @@ class Layout extends Component {
       {
         title: 'Test',
         link: 'test'
-      },
-       {
-        title: 'Cars',
-        link: 'car'
-      },
-      {
-        title: 'Exercise New',
-        link: 'exercise'
       }
     ]});
   }

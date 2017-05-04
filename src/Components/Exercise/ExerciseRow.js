@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from "react-router";
 
 
-class ExerciseItem extends Component {
+class ExerciseRow extends Component {
   render() {
-  	 const exercises = this.props.todo;
+  	 const exercises = this.props.exercises;
 
     return (
     	<tr>
@@ -26,8 +26,8 @@ class ExerciseItem extends Component {
   }
 }
 
-ExerciseItem.propTypes = {
+ExerciseRow.propTypes = {
   todo: React.PropTypes.object
 }
 
-export default ExerciseItem;
+export default ExerciseRow;
