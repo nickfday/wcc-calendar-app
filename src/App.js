@@ -38,7 +38,6 @@ class App extends Component {
 	render() {
 		return (
 			 <div>
-			 {this.props.children || <Home/>}
     	<NavList projects={this.state.projects} />
     	</div>
 		);

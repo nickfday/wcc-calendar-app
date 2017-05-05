@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ScrollableAnchor from 'react-scrollable-anchor'
 import { configureAnchors } from 'react-scrollable-anchor'
 import Scrollspy from 'react-scrollspy'
+import ExerciseSidebar from './ExerciseSidebar';
 //var Scrollspy = require('react-scrollspy').Scrollspy;
 
 // var Scrollspy = require('react-scrollspy').Scrollspy;
@@ -69,40 +70,9 @@ class ExerciseNewDetail extends Component {
 		            </div>
 
 		            <div className="col-sm-2">
-		            	<div className="sticky">
-										<div id="innerMenu">
-								          <Scrollspy classNitems={ ['video', 'description', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current" offset={-60} className="nav nav-pills flex-column">
-								          <li className="nav-item"><a href='#videoHeader' className="nav-link">Video</a></li>
-								          <li className="nav-item"><a href='#descriptionHeader' className="nav-link">Description</a></li>
-								          <li className="nav-item"><a href='#howToPerformHeader' className="nav-link">How to Perform</a></li>
-								          <li className="nav-item"><a href='#factsHeader' className="nav-link">Facts</a></li>
-								          <li className="nav-item"><a href='#strengthStandardsHeader' className="nav-link">Strength Standards</a></li>
-								          <li className="nav-item"><a href='#relatedArticlesHeader' className="nav-link">Related Articles</a></li>
-								          <li className="nav-item"><a href='#relatedExercisesHeader' className="nav-link">Related Exercises</a></li>
-											  </Scrollspy>
-							      </div>
-							    </div>
+		            	<ExerciseSidebar />
 		            </div>
-
             </div>
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
           </div>
         );
     }
