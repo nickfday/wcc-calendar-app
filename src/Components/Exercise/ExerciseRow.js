@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
+import PropTypes from 'prop-types';
 
 
 class ExerciseRow extends Component {
@@ -10,11 +11,9 @@ class ExerciseRow extends Component {
     	<tr>
     		<td><img src={exercises.image_path} alt="" /></td>
     		<td>
-    		 <Link to = {{
+    		 <Link to={{
               pathname: `/exercise/${exercises.uuid}`,
-              state: { exercise: exercises
-                     }
-
+              state: { exercise: exercises}
             }}>{exercises.title}</Link>
     		</td>
     		<td>{exercises.primary_muscle}</td>

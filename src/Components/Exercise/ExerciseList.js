@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import { Table } from 'reactstrap';
-
 import ExerciseRow from './ExerciseRow';
+var Spinner = require('react-spinkit');
+
 
 
 class ExerciseList extends Component {
@@ -20,7 +21,7 @@ class ExerciseList extends Component {
       cache: false,
       success: function(data){
         this.setState({exercises: data}, function(){
-          console.log(this.state);
+          //console.log(this.state);
         });
       }.bind(this),
       error: function(xhr, status, err){

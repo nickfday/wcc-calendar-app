@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
+import PropTypes from 'prop-types';
+
 
 class NavItem extends Component {
   render() {

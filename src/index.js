@@ -4,7 +4,6 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from './App';
 import './index.css';
 import './App.css';
-//import { Navbar, Jumbotron, Button, Navigation } from 'react-bootstrap';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
 import ExerciseList from './Components/Exercise/ExerciseList';

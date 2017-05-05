@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import NavItem from './NavItem';
+import PropTypes from 'prop-types';
 
 
 class NavList extends Component {
@@ -16,22 +18,25 @@ class NavList extends Component {
     }
     return (
 
-        <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-					<button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-						<span className="navbar-toggler-icon"></span>
-					</button>
-					<a className="navbar-brand" href="#">Navbar</a>
+        <Navbar className="bg-inverse" fixedTop={true} inverse={true} >
+		      <Navbar.Header>
+				      <Navbar.Brand>
+				        <a href="#">React-Bootstrap</a>
+				      </Navbar.Brand>
+		      		<Navbar.Toggle className="navbar-toggler-icon" />
+		    	</Navbar.Header>
 
-					<div className="collapse navbar-collapse" id="navbarsExampleDefault">
-					<ul className="navbar-nav mr-auto">
-						{NavItems}
-					</ul>
-					<form className="form-inline my-2 my-lg-0">
-						<input className="form-control mr-sm-2" type="text" placeholder="Search" />
-						<button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					<Navbar.Collapse>
+						<Nav>
+							{NavItems}
+						</Nav>
+						<form className="form-inline my-2 my-lg-0 pull-right">
+							<input className="form-control mr-sm-2" type="text" placeholder="Search" />
+							<button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 					</form>
-				</div>
-			</nav>
+					</Navbar.Collapse>
+
+			</Navbar>
     );
   }
 }
