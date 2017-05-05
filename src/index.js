@@ -17,6 +17,7 @@ ReactDOM.render((
 		    <Route exact path="/" component={Home}/>
 		    <Route exact path="/exercise" component={ExerciseList}/>
 		    <Route exact path="/exercise/:id" component={ExerciseSingle} />
+		    < Footer />
 	    </div>
 	  </Router>
   ),
