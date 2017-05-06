@@ -14,7 +14,7 @@ class App extends Component {
 		}
 	}
 
-	 getnavItems(){
+	 getNavItems(){
     this.setState({navItems: [
       {
         title: 'Home',
@@ -28,11 +28,11 @@ class App extends Component {
   }
 
 	componentWillMount(){
-    this.getnavItems();
+    this.getNavItems();
   }
 
   componentDidMount(){
-  	this.getnavItems();
+  	this.getNavItems();
   }
 
 	render() {
