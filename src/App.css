@@ -15,13 +15,21 @@
   position: fixed;
 }
 
-.is-current a {
-	color: #fff;
+a.active {
+	color: #fff!important;
   cursor: default;
-  background-color: #0275d8;
+  text-decoration: underline;
 }
 
 .exercise-detail ol {
 	margin-left: 0;
 	padding-left: 16px;
+}
+
+nav form {
+	padding-top: 8px;
+}
+
+nav input {
+	margin-right: 10px;
 }

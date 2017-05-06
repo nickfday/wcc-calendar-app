@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import NavItem from './NavItem';
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 
@@ -21,7 +23,7 @@ class NavList extends Component {
         <Navbar className="bg-inverse" fixedTop={true} inverse={true} >
 		      <Navbar.Header>
 				      <Navbar.Brand>
-				        <a href="#">React-Bootstrap</a>
+				        <Link to="/">React-Bootstrap</Link>
 				      </Navbar.Brand>
 		      		<Navbar.Toggle className="navbar-toggler-icon" />
 		    	</Navbar.Header>

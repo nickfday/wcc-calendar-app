@@ -9,7 +9,11 @@ class NavItem extends Component {
   render() {
     return (
     	<li className="nav-item">
-							<NavLink className="nav-link" to={this.props.project.link}>{this.props.project.title} <span className="sr-only"></span></NavLink>
+							<NavLink className="nav-link"
+							to={this.props.project.link}>
+								{this.props.project.title}
+								<span className="sr-only"></span>
+							</NavLink>
 						</li>
     );
   }
