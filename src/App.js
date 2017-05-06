@@ -10,12 +10,12 @@ class App extends Component {
 	constructor(){
 		super();
 		this.state = {
-		  projects: []
+		  navItems: []
 		}
 	}
 
-	 getProjects(){
-    this.setState({projects: [
+	 getnavItems(){
+    this.setState({navItems: [
       {
         title: 'Home',
         link: '/'
@@ -28,17 +28,17 @@ class App extends Component {
   }
 
 	componentWillMount(){
-    this.getProjects();
+    this.getnavItems();
   }
 
   componentDidMount(){
-  	this.getProjects();
+  	this.getnavItems();
   }
 
 	render() {
 		return (
 			 <div>
-    	<NavList projects={this.state.projects} />
+    	<NavList navItems={this.state.navItems} />
     	</div>
 		);
 	}

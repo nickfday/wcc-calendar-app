@@ -10,9 +10,8 @@ class NavList extends Component {
 
   render() {
     let NavItems;
-    if(this.props.projects){
-      NavItems = this.props.projects.map(project => {
-        //console.log(project);
+    if(this.props.navItems){
+      NavItems = this.props.navItems.map(project => {
         return (
           <NavItem project={project} key={project.title} />
         );
@@ -44,7 +43,7 @@ class NavList extends Component {
 }
 
 NavList.propTypes = {
-  projects: React.PropTypes.array,
+  navItems: React.PropTypes.array,
   onDelete: React.PropTypes.func
 }
 
