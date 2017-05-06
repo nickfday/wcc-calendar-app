@@ -15,8 +15,8 @@ class ExerciseSidebar extends Component {
         return (
           <div className="sticky">
 										<div id="innerMenu">
-								          <Scrollspy classNitems={ ['video', 'description', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current" offset={-60}
-								           className="nav nav-pills">
+								          <Scrollspy items={ ['video', 'description', 'howToPerform', 'facts', 'strengthStandards', 'relatedArticles', 'relatedExercises' ] } currentClassName="is-current" offset={-60}
+								           className="nav nav-pills nav-stacked">
 								          <li className="nav-item"><a href='#videoHeader' className="nav-link">Video</a></li>
 								          <li className="nav-item"><a href='#descriptionHeader' className="nav-link">Description</a></li>
 								          <li className="nav-item"><a href='#howToPerformHeader' className="nav-link">How to Perform</a></li>
