@@ -19,6 +19,7 @@
     "reactstrap": "^4.2.0"
   },
   "devDependencies": {
+    "react-loader": "^2.4.0",
     "react-scripts": "0.9.3"
   },
   "scripts": {
