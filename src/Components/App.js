@@ -33,14 +33,14 @@ export default App;
 ReactDOM.render((
 	  <Router>
 	  	<div>
-	  		{<Layout />}
+	  		<Layout />
 	  		<Switch>
 			    <Route exact path="/" component={Home}/>
 			    <Route exact path="/exercise" component={ExerciseList}/>
 			    <Route exact path="/exercise/:id" component={ExerciseSingle} />
 			    <Route component={NoMatch}/>
 		    </Switch>
-		    < Footer />
+		    <Footer />
 	    </div>
 	  </Router>
   ),
