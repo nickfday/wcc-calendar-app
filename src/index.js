@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 //import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import {  BrowserRouter as Router, Link, Route, IndexRoute, browserHistory, NavLink, Redirect, Switch } from 'react-router-dom';
 import App from './App';
-import './index.css';
-import './App.css';
+import './app.css';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
 import ExerciseList from './Components/Exercise/ExerciseList';

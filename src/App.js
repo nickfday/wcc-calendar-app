@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
+//import './App.css';
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import NavList from './Components/NavList';
 import Home from './Components/Home';

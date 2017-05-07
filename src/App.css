@@ -1,35 +1,27 @@
 .NavigationItem {
-	color: #fff;
-}
+  color: #fff; }
 
 .content {
-	margin-top: 60px;
-}
+  margin-top: 60px; }
 
 .exercise-list img {
-	height: 100px;
-	width: 100px;
-}
+  height: 100px;
+  width: 100px; }
 
 .sticky {
-  position: fixed;
-}
+  position: fixed; }
 
 a.active {
-	color: #fff!important;
+  color: #fff !important;
   cursor: default;
-  text-decoration: underline;
-}
+  text-decoration: underline; }
 
 .exercise-detail ol {
-	margin-left: 0;
-	padding-left: 16px;
-}
+  margin-left: 0;
+  padding-left: 16px; }
 
 nav form {
-	padding-top: 8px;
-}
+  padding-top: 8px; }
 
 nav input {
-	margin-right: 10px;
-}
+  margin-right: 10px; }
