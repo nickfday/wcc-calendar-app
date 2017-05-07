@@ -1,36 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-//import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import {  BrowserRouter as Router, Link, Route, IndexRoute, browserHistory, NavLink, Redirect, Switch } from 'react-router-dom';
-import Layout from './Layout';
-import './app.css';
-import Home from './Components/Home';
-import Footer from './Components/Footer';
-import ExerciseList from './Components/Exercise/ExerciseList';
-import ExerciseSingle from './Components/Exercise/ExerciseSingle';
+import App from './Components/App';
 
 ReactDOM.render((
-	  <Router>
-	  	<div>
-
-	  		{/*<Route path="/" component={App}/>*/}
-	  		{<Layout />}
-	  		<Switch>
-			    <Route exact path="/" component={Home}/>
-			    <Route exact path="/exercise" component={ExerciseList}/>
-			    <Route exact path="/exercise/:id" component={ExerciseSingle} />
-			    <Route component={NoMatch}/>
-		    </Switch>
-		    < Footer />
-	    </div>
-	  </Router>
+	  <App />
   ),
 
   document.getElementById('root')
 );
-
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>No match for <code>{location.pathname}</code></h3>
-  </div>
-)

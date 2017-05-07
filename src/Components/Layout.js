@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+//import './App.css';
+//import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import NavList from './NavList';
-
+import Home from './Home';
+var Spinner = require('react-spinkit');
 
 class Layout extends Component {
 	constructor(){
 		super();
 		this.state = {
-			projects: [],
+		  navItems: []
 		}
 	}
 
-	 getProjects(){
-    this.setState({projects: [
+	 getNavItems(){
+    this.setState({navItems: [
       {
         title: 'Home',
         link: '/'
@@ -19,33 +23,25 @@ class Layout extends Component {
       {
         title: 'Exercise',
         link: 'exercise'
-      },
-      {
-        title: 'Workout',
-        link: 'users'
-      },
-      {
-        title: 'Test',
-        link: 'test'
       }
     ]});
   }
 
 	componentWillMount(){
-    this.getProjects();
+    this.getNavItems();
   }
 
   componentDidMount(){
-    this.getProjects();
+  	this.getNavItems();
   }
 
-  render() {
-    return (
-    	<div>
-    	<Projects projects={this.state.projects} />
+	render() {
+		return (
+			 <div>
+    	<NavList navItems={this.state.navItems} />
     	</div>
-    );
-  }
+		);
+	}
 }
 
 export default Layout;
