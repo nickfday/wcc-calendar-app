@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ScrollableAnchor from 'react-scrollable-anchor'
 import { configureAnchors } from 'react-scrollable-anchor'
 import Scrollspy from 'react-scrollspy'
 

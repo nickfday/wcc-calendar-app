@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-//import './App.css';
-//import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import NavList from './NavList';
-import Home from './Home';
 var Spinner = require('react-spinkit');
 
 class Layout extends Component {
@@ -22,7 +19,7 @@ class Layout extends Component {
       },
       {
         title: 'Exercise',
-        link: 'exercise'
+        link: '/exercise'
       }
     ]});
   }
