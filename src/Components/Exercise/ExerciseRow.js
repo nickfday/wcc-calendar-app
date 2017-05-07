@@ -27,7 +27,7 @@ class ExerciseRow extends Component {
 }
 
 ExerciseRow.propTypes = {
-  todo: React.PropTypes.object
+  todo: PropTypes.object
 }
 
 export default ExerciseRow;

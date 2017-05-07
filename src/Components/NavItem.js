@@ -20,8 +20,8 @@ class NavItem extends Component {
 }
 
 NavItem.propTypes = {
-  project: React.PropTypes.object,
-  onDelete: React.PropTypes.func
+  project: PropTypes.object,
+  onDelete: PropTypes.func
 }
 
 export default NavItem;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import NavItem from './NavItem';
 import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 
 
@@ -43,8 +42,8 @@ class NavList extends Component {
 }
 
 NavList.propTypes = {
-  navItems: React.PropTypes.array,
-  onDelete: React.PropTypes.func
+  navItems: PropTypes.array,
+  onDelete: PropTypes.func
 }
 
 export default NavList;
