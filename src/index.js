@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 //import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import {  BrowserRouter as Router, Link, Route, IndexRoute, browserHistory, NavLink, Redirect, Switch } from 'react-router-dom';
-import App from './App';
+import Layout from './Layout';
 import './app.css';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
@@ -14,7 +14,7 @@ ReactDOM.render((
 	  	<div>
 
 	  		{/*<Route path="/" component={App}/>*/}
-	  		{<App />}
+	  		{<Layout />}
 	  		<Switch>
 			    <Route exact path="/" component={Home}/>
 			    <Route exact path="/exercise" component={ExerciseList}/>

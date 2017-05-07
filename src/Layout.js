@@ -6,7 +6,7 @@ import NavList from './Components/NavList';
 import Home from './Components/Home';
 var Spinner = require('react-spinkit');
 
-class App extends Component {
+class Layout extends Component {
 	constructor(){
 		super();
 		this.state = {
@@ -44,4 +44,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default Layout;
