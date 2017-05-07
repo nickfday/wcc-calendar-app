@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import NavList from './NavList';
-var Spinner = require('react-spinkit');
 
 class Layout extends Component {
 	constructor(){

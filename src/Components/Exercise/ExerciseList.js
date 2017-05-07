@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import { Table } from 'reactstrap';
 import ExerciseRow from './ExerciseRow';
-var Spinner = require('react-spinkit');
 var Loader = require('react-loader');
 import axios from 'axios';
 
@@ -19,20 +17,6 @@ class ExerciseList extends Component {
 	}
 
 	getExercises(){
-    {/*$.ajax({
-      url: 'http://fitnessremoted7.dev/api/rest/views/exercise.json',
-      dataType:'json',
-      cache: false,
-      success: function(data){
-        this.setState({exercises: data}, function(){
-          //console.log(this.state);
-        });
-      }.bind(this),
-      error: function(xhr, status, err){
-        console.log(err);
-      }
-    });*/}
-
     const self = this;
     axios.get('http://fitnessremoted7.dev/api/rest/views/exercise.json')
     .then(function(response) {

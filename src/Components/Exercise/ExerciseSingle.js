@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import ScrollableAnchor from 'react-scrollable-anchor'
 import { configureAnchors } from 'react-scrollable-anchor'
-import Scrollspy from 'react-scrollspy'
 import ExerciseSidebar from './ExerciseSidebar';
-//var Scrollspy = require('react-scrollspy').Scrollspy;
 
-// var Scrollspy = require('react-scrollspy').Scrollspy;
 
 class ExerciseNewDetail extends Component {
     render(){
