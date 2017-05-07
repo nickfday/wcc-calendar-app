@@ -6,13 +6,14 @@ import PropTypes from 'prop-types';
 class ExerciseRow extends Component {
   render() {
   	 const exercises = this.props.exercises;
+  	 const exerciseURL = exercises.title.replace(/\s+/g, '-').toLowerCase();
 
     return (
     	<tr>
     		<td><img src={exercises.image_path} alt="" /></td>
     		<td>
     		 <Link to={{
-              pathname: `/exercise/${exercises.uuid}`,
+              pathname: `/exercise/${exerciseURL}`,
               state: { exercise: exercises}
             }}>{exercises.title}</Link>
     		</td>
