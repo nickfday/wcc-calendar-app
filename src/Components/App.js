@@ -11,10 +11,10 @@ const NoMatch = ({ location }) => (
   <div className="container content">
     <h3>404- No match for <code>{location.pathname}</code></h3>
   </div>
-)
+);
 
 class App extends Component {
-	render() {
+  render() {
 		return(
 			<Router>
 	  	<div>

@@ -19,6 +19,8 @@
     "reactstrap": "^4.2.0"
   },
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^7.0.0",
     "react-scripts": "0.9.3"
   },
   "scripts": {
@@ -26,5 +28,8 @@
     "build": "react-scripts-with-sass build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "plugins": [
+    "react"
+  ]
 }
