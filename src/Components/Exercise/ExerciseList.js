@@ -51,7 +51,7 @@ class ExerciseList extends Component {
   	var rows = [];
   	var exerciseList = this.state;
   	this.state.exercises.forEach(function(row){
-  		if ((exerciseList.filterText !='') && (row.title.indexOf(exerciseList.filterText) === -1)) {
+  		if ((exerciseList.filterText !='') && (row.title.toLowerCase().indexOf(exerciseList.filterText.toLowerCase()) === -1)) {
   			return;
   		}
   	 rows.push( <ExerciseRow exercises={row} key={row.uuid} />);
