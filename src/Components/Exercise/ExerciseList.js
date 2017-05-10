@@ -5,6 +5,7 @@ import ExerciseFilter from './ExerciseFilter';
 import ExerciseSelect from './ExerciseSelect';
 var Loader = require('react-loader');
 import axios from 'axios';
+import $ from 'jquery';
 
 class ExerciseList extends Component {
   constructor(){
@@ -17,7 +18,8 @@ class ExerciseList extends Component {
     };
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
     this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
-  }
+    this.handleReset = this.handleReset.bind(this);
+    }
 
   handleFilterTextInput(filterText) {
     this.setState({
@@ -30,12 +32,18 @@ class ExerciseList extends Component {
       primaryMuscle: primaryMuscle
     });
   }
-
-  resetForm(event) {
+  // RESET STATE FUNCTION
+  handleReset(event) {
     event.preventDefault();
     console.log('reset');
-    //filterText = '';
-    //document.getElementById("exerciseForm").reset();
+    console.log(this);
+    this.setState({
+      filterText: '',
+      primaryMuscle: 'Any Primary Muscle'
+    });
+    $('.primaryMuscleSelect').val('Any Primary Muscle').change();
+
+
   }
 
   getExercises(){
@@ -61,22 +69,22 @@ class ExerciseList extends Component {
 
 
   render() {
-    var rows = [];
-    var emptyText = [];
-    var exerciseList = this.state;
-    var noResultsText = "No results - please adjust filters";
+    let rows = [];
+    let emptyText = [];
+    let exerciseList = this.state;
+    const noResultsText = "No results - please adjust filterss";
 
     this.state.exercises.forEach(function(row){
       //Search filter condition
       if (
-        (exerciseList.filterText !='') &&
+        (exerciseList.filterText !=='') &&
         (row.title.toLowerCase().indexOf(exerciseList.filterText.toLowerCase()) === -1)
        ) {
-  			return;
+        return;
       }
       //Primary Muscle condition
       if (
-        (exerciseList.primaryMuscle != 'Any Primary Muscle') &&
+        (exerciseList.primaryMuscle !== 'Any Primary Muscle') &&
         (row.primary_muscle.indexOf(exerciseList.primaryMuscle))) {
         return;
       }
@@ -86,10 +94,9 @@ class ExerciseList extends Component {
     });
     // at loop end
    if (rows.length === 0) {
-   	console.log('no results');
-   	rows.push(<p>{noResultsText}</p>);
+    console.log('no results');
+    rows.push(<p key={'no results'}>{noResultsText}</p>);
    }
-
 
     return(
       <div className="content exercise-list container">
@@ -107,7 +114,7 @@ class ExerciseList extends Component {
              <ExerciseSelect muscles={this.state.exercises} onSelectTextInput={this.handleSelectTextInput}/>
            </div>
            <div className="col-sm-2">
-             <button onClick={this.resetForm} className="btn btn-primary">Reset</button>
+             <button onClick={this.handleReset} className="btn btn-primary">Reset</button>
            </div>
            </form>
 
@@ -124,7 +131,7 @@ class ExerciseList extends Component {
              </tr>
            </thead>
            <tbody>
-            {rows} {emptyText}
+            {rows}
             </tbody>
         </Table>
         </Loader>
