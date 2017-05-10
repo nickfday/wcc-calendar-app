@@ -13,14 +13,13 @@ class ExerciseFilter extends Component {
   render() {
     return(
       <div>
-        <h3>Filters</h3>
-          <form>
+
             <input type="text"
               placeholder="Search..."
               value={this.props.filterText}
               onChange={this.handleFilterTextInputChange}
              />
-          </form>
+
         </div>
     );
   }

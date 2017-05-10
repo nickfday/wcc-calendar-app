@@ -29,7 +29,7 @@ class ExercisSelect extends Component {
 
     return(
       <select onChange={this.handleSelectChange}>
-        <option>Primary Muscle</option>
+        <option>Any Primary Muscle</option>
         {newnewmuscles}
       </select>
     );
