@@ -20,7 +20,7 @@ class ExerciseList extends Component {
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
     this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
-    this.exerciseSort = this.exerciseSort.bind(this);
+    this.handleSort = this.handleSort.bind(this);
     }
 
   handleFilterTextInput(filterText) {
@@ -44,21 +44,16 @@ class ExerciseList extends Component {
     $('.primaryMuscleSelect').val('Any Primary Muscle').change();
   }
 
-  exerciseSort(col) {
-      console.log(this);
-      console.log(this.state.col);
-      console.log(col);
-      this.state.exercises.sort(function(a, b){
-        console.log(col);
-        if(a[col] < b[col]) return -1;
-        if(a[col] > b[col]) return 1;
+  handleSort(col) {
+    this.state.exercises.sort(function(a, b){
+      if(a[col] < b[col]) return -1;
+      if(a[col] > b[col]) return 1;
       return 0;
-     })
-      console.log(this.state.exercises);
-      this.setState({
-        exercises: this.state.exercises
-      });
-    }
+    });
+    this.setState({
+      exercises: this.state.exercises
+    });
+  }
 
   getExercises(){
     const self = this;
@@ -138,10 +133,10 @@ class ExerciseList extends Component {
         <thead>
              <tr>
                <th>Image</th>
-               <th onClick={()=>this.exerciseSort('title')}>Name</th>
-               <th onClick={()=>this.exerciseSort('primary_muscle')}>Primary Muscle</th>
+               <th onClick={()=>this.handleSort('title')}>Name</th>
+               <th onClick={()=>this.handleSort('primary_muscle')}>Primary Muscle</th>
                <th>Secondary Muscles</th>
-               <th onClick={()=>this.exerciseSort('equipment')}>Equipment</th>
+               <th onClick={()=>this.handleSort('equipment')}>Equipment</th>
              </tr>
            </thead>
            <tbody>
