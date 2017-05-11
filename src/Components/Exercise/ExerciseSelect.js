@@ -7,24 +7,23 @@ class ExercisSelect extends Component {
   }
 
    handleSelectChange(e) {
-   	console.log('HELLO');
     this.props.onSelectTextInput(e.target.value);
   }
 
   render() {
-  	// improve code
-  	var muscles = [];
-  	var newMuscles = [];
-  	var newnewmuscles = [];
-  	this.props.muscles.map(function(muscle, index){
+    // improve code
+    var muscles = [];
+    var newMuscles = [];
+    var newnewmuscles = [];
+    this.props.muscles.map(function(muscle, index){
       muscles.push(muscle.primary_muscle);
-  	})
-  	newMuscles = Array.from(new Set(muscles));
-  	newMuscles.map(function(newmuscle, index){
-  		newnewmuscles.push(
-  			<option key={index}>{newmuscle}</option>
-  			)
-  	})
+    })
+    newMuscles = Array.from(new Set(muscles));
+    newMuscles.map(function(newmuscle, index){
+      newnewmuscles.push(
+        <option key={index}>{newmuscle}</option>
+        );
+    });
 
 
     return(

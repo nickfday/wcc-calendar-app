@@ -35,8 +35,6 @@ class ExerciseList extends Component {
   // RESET STATE FUNCTION
   handleReset(event) {
     event.preventDefault();
-    console.log('reset');
-    console.log(this);
     this.setState({
       filterText: '',
       primaryMuscle: 'Any Primary Muscle'
