@@ -57,7 +57,7 @@ class ExerciseList extends Component {
 
   getExercises(){
     const self = this;
-    axios.get('http://fitnessremoted7.dev/api/rest/views/exercise.json')
+    axios.get('http://alphawcc.dev/api/calendar/views/calendar_json.json')
     .then(function(response) {
       self.setState({exercises: response.data, loaded: true}, function(){
       });
@@ -92,14 +92,14 @@ class ExerciseList extends Component {
         return;
       }
       //Primary Muscle condition
-      if (
-        (exerciseList.primaryMuscle !== 'Any Primary Muscle') &&
-        (row.primary_muscle.indexOf(exerciseList.primaryMuscle))) {
-        return;
-      }
+      // if (
+      //   (exerciseList.title !== 'Any Primary Muscle') &&
+      //   (row.title.indexOf(exerciseList.title))) {
+      //   return;
+      // }
 
       //Show rows
-      rows.push( <ExerciseRow exercises={row} key={row.uuid} />);
+      rows.push( <ExerciseRow exercises={row} key={row.title} />);
     });
     // at loop end
    if (rows.length === 0) {
@@ -110,7 +110,7 @@ class ExerciseList extends Component {
     return(
       <div className="content exercise-list container">
       <Loader loaded={this.state.loaded}>
-        <h1>Exercises</h1>
+        <h1>Events</h1>
         <div className="row">
           <form id="exerciseForm">
             <div className="col-sm-4">
@@ -129,20 +129,9 @@ class ExerciseList extends Component {
 
         </div>
 
-        <Table responsive>
-        <thead>
-             <tr>
-               <th>Image</th>
-               <th onClick={()=>this.handleSort('title')}>Name</th>
-               <th onClick={()=>this.handleSort('primary_muscle')}>Primary Muscle</th>
-               <th>Secondary Muscles</th>
-               <th onClick={()=>this.handleSort('equipment')}>Equipment</th>
-             </tr>
-           </thead>
-           <tbody>
+
             {rows}
-            </tbody>
-        </Table>
+
         </Loader>
       </div>
     );

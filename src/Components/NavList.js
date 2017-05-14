@@ -21,7 +21,7 @@ class NavList extends Component {
         <Navbar className="bg-inverse" fixedTop={true} inverse={true} >
 		      <Navbar.Header>
 				      <Navbar.Brand>
-				        <Link to="/">React-Bootstrap</Link>
+				        <Link to="/">WCC Calendar</Link>
 				      </Navbar.Brand>
 		      		<Navbar.Toggle className="navbar-toggler-icon" />
 		    	</Navbar.Header>
