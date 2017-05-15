@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
-import ExerciseRow from './ExerciseRow';
-import ExerciseFilter from './ExerciseFilter';
-import ExerciseSelect from './ExerciseSelect';
+import CalendarRow from './CalendarRow';
+import CalendarFilter from './CalendarFilter';
+import CalendarSelect from './CalendarSelect';
 var Loader = require('react-loader');
 import axios from 'axios';
 import $ from 'jquery';
 
-class ExerciseList extends Component {
+class CalendarList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      exercises:[],
+      exercises: [],
       loaded: false,
       filterText: '',
       primaryMuscle: ''
@@ -60,6 +60,7 @@ class ExerciseList extends Component {
     axios.get('http://alphawcc.dev/api/calendar/views/calendar_json.json')
     .then(function(response) {
       self.setState({exercises: response.data, loaded: true}, function(){
+      	//console.log(response);
       });
     })
     .catch(function(error) {
@@ -99,7 +100,7 @@ class ExerciseList extends Component {
       // }
 
       //Show rows
-      rows.push( <ExerciseRow exercises={row} key={row.title} />);
+      rows.push( <CalendarRow exercises={row} key={row.u} />);
     });
     // at loop end
    if (rows.length === 0) {
@@ -117,13 +118,13 @@ class ExerciseList extends Component {
         <div className="row">
           <form id="exerciseForm">
             <div className="col-sm-4">
-              <ExerciseFilter
+              <CalendarFilter
               filterText={this.state.filterText}
               onFilterTextInput={this.handleFilterTextInput}
               />
              </div>
            <div className="col-sm-3">
-             <ExerciseSelect muscles={this.state.exercises} onSelectTextInput={this.handleSelectTextInput}/>
+             <CalendarSelect muscles={this.state.exercises} onSelectTextInput={this.handleSelectTextInput}/>
            </div>
            <div className="col-sm-2">
              <button onClick={this.handleReset} className="btn btn-primary">Reset</button>
@@ -139,4 +140,4 @@ class ExerciseList extends Component {
   }
 }
 
-export default ExerciseList;
+export default CalendarList;

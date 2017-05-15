@@ -4,8 +4,8 @@ import Layout from './Layout';
 import './app.css';
 import Home from './Home';
 import Footer from './Footer';
-import ExerciseList from './Exercise/ExerciseList';
-import ExerciseSingle from './Exercise/ExerciseSingle';
+import CalendarList from './Calendar/CalendarList';
+import CalendarSingle from './Calendar/CalendarSingle';
 
 const NoMatch = ({ location }) => (
   <div className="container content">
@@ -20,8 +20,8 @@ class App extends Component {
 	  	<div>
 	  		{<Layout />}
 	  		<Switch>
-			    <Route exact path="/" component={ExerciseList}/>
-			    <Route exact path="/exercise/:id" component={ExerciseSingle} />
+			    <Route exact path="/" component={CalendarList}/>
+			    <Route exact path="/exercise/:id" component={CalendarSingle} />
 			    <Route component={NoMatch}/>
 		    </Switch>
 		    < Footer />

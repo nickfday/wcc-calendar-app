@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class ExerciseNewDetail extends Component {
+class CalendarSingle extends Component {
     render(){
 
         //const exercises = this.props.location.state.exercise
@@ -44,4 +44,4 @@ class ExerciseNewDetail extends Component {
     }
 }
 
-export default ExerciseNewDetail;
+export default CalendarSingle;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './exercise-list.css';
+import './calendar-list.css';
 
 
-class ExerciseRow extends Component {
+class CalendarRow extends Component {
   render() {
     const exercises = this.props.exercises;
     const exerciseURL = exercises.uuid.replace(/\s+/g, '-').toLowerCase();
@@ -75,8 +75,8 @@ class ExerciseRow extends Component {
   }
 }
 
-ExerciseRow.propTypes = {
+CalendarRow.propTypes = {
   todo: PropTypes.object
 }
 
-export default ExerciseRow;
+export default CalendarRow;
