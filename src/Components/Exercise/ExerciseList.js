@@ -81,7 +81,7 @@ class ExerciseList extends Component {
     let rows = [];
     let emptyText = [];
     let exerciseList = this.state;
-    const noResultsText = "No results - please adjust filterss";
+    const noResultsText = "No results - please adjust filters";
 
     this.state.exercises.forEach(function(row){
       //Search filter condition
@@ -110,7 +110,10 @@ class ExerciseList extends Component {
     return(
       <div className="content exercise-list container">
       <Loader loaded={this.state.loaded}>
-        <h1>Events</h1>
+        <div className="sp-head row">
+            <a href="/" class="go-up icon-arrow-left"></a>
+            <h1>Events</h1>
+        </div>
         <div className="row">
           <form id="exerciseForm">
             <div className="col-sm-4">
@@ -126,9 +129,7 @@ class ExerciseList extends Component {
              <button onClick={this.handleReset} className="btn btn-primary">Reset</button>
            </div>
            </form>
-
         </div>
-
 
             {rows}
 

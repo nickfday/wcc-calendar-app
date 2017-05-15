@@ -20,8 +20,7 @@ class App extends Component {
 	  	<div>
 	  		{<Layout />}
 	  		<Switch>
-			    <Route exact path="/" component={Home}/>
-			    <Route exact path="/exercise" component={ExerciseList}/>
+			    <Route exact path="/" component={ExerciseList}/>
 			    <Route exact path="/exercise/:id" component={ExerciseSingle} />
 			    <Route component={NoMatch}/>
 		    </Switch>
