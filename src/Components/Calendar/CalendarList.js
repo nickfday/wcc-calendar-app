@@ -12,7 +12,7 @@ class CalendarList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      exercises: [],
+      events: [],
       loaded: false,
       titleText: '',
       addressText: '',
@@ -61,21 +61,21 @@ class CalendarList extends Component {
   }
 
   handleSort(col) {
-    this.state.exercises.sort(function(a, b){
+    this.state.events.sort(function(a, b){
       if(a[col] < b[col]) return -1;
       if(a[col] > b[col]) return 1;
       return 0;
     });
     this.setState({
-      exercises: this.state.exercises
+      events: this.state.events
     });
   }
 
-  getExercises(){
+  getEvents(){
     const self = this;
     axios.get('http://alphawcc.dev/api/calendar/views/calendar_json.json')
     .then(function(response) {
-      self.setState({exercises: response.data, loaded: true}, function(){
+      self.setState({events: response.data, loaded: true}, function(){
       	//console.log(response);
       });
     })
@@ -86,11 +86,11 @@ class CalendarList extends Component {
 
 
   componentWillMount(){
-    this.getExercises();
+    this.getEvents();
   }
 
   componentDidMount(){
-    this.getExercises();
+    this.getEvents();
   }
 
 
@@ -100,7 +100,7 @@ class CalendarList extends Component {
     let exerciseList = this.state;
     const noResultsText = "No results - please adjust filters";
 
-    this.state.exercises.forEach(function(row){
+    this.state.events.forEach(function(row){
       //Search filter condition
       if (
         (exerciseList.titleText !=='') &&
@@ -125,7 +125,7 @@ class CalendarList extends Component {
       // }
 
       //Show rows
-      rows.push( <CalendarRow exercises={row} key={row.u} />);
+      rows.push( <CalendarRow events={row} key={row.u} />);
     });
     // at loop end
    if (rows.length === 0) {

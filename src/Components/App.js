@@ -21,7 +21,7 @@ class App extends Component {
 	  		{<Layout />}
 	  		<Switch>
 			    <Route exact path="/" component={CalendarList}/>
-			    <Route exact path="/exercise/:id" component={CalendarSingle} />
+			    <Route exact path="/event/:id" component={CalendarSingle} />
 			    <Route component={NoMatch}/>
 		    </Switch>
 		    < Footer />

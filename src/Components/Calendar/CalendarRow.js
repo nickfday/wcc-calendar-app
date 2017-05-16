@@ -6,34 +6,34 @@ import './calendar-list.css';
 
 class CalendarRow extends Component {
   render() {
-    const exercises = this.props.exercises;
-    const exerciseURL = exercises.uuid.replace(/\s+/g, '-').toLowerCase();
+    const event = this.props.events;
+    const eventURL = event.uuid.replace(/\s+/g, '-').toLowerCase();
 
     //extract year
-    const eventYear = exercises.date.slice(0,4);
+    const eventYear = event.date.slice(0,4);
     //extract day
-    const eventDay = exercises.date.slice(8, 11);
+    const eventDay = event.date.slice(8, 11);
     //extract month
-    const eventMonth = exercises.date.slice(5,7);
+    const eventMonth = event.date.slice(5,7);
     //extract time
-    const eventTime = exercises.date.slice(11,16);
+    const eventTime = event.date.slice(11,16);
 
     return (
       <div className="event-row row">
         <div className="event-info col-xs-10">
          <h3>
            <Link to={{
-             pathname: `/exercise/${exerciseURL}`,
-             state: { exercise: exercises}
-              }}>{exercises.title}
+             pathname: `/event/${eventURL}`,
+             state: { events: event}
+              }}>{event.title}
            </Link>
          </h3>
          <br />
          <div>
-           {exercises.body}...
+           {event.body}...
            <Link to={{
-           pathname: `/exercise/${exerciseURL}`,
-           state: { exercise: exercises}
+           pathname: `/event/${eventURL}`,
+           state: { event: event}
             }}>Read More
          </Link>
          </div>
@@ -43,15 +43,15 @@ class CalendarRow extends Component {
          </div>
           <br />
          <div>
-           {exercises.location}
+           {event.location}
          </div>
           <br />
          <div>
-           {exercises.event_type}
+           {event.event_type}
          </div>
           <br />
          <div>
-           {exercises.audience}
+           {event.audience}
          </div>
 
          </div>

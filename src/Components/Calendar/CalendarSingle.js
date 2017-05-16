@@ -10,7 +10,7 @@ class CalendarSingle extends Component {
             <div className="content exercise-detail container">
             	<div className="row">
 		            <div className="col-sm-12">
-		                <h1>{this.props.location.state.exercise.title}</h1>
+		                <h1>{this.props.location.state.events.title}</h1>
 
 
 										<section id='description' className="page-header">
