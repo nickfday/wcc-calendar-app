@@ -12,15 +12,15 @@ class CalendarFilter extends Component {
 
   render() {
     return(
-      <div>
-
-            <input type="text"
-              placeholder="Search..."
-              value={this.props.filterText}
-              onChange={this.handleFilterTextInputChange}
-             />
-
-        </div>
+       <div class="form-group">
+         <label className="sr-only" for="exampleInputEmail3">{this.props.placeholder}</label>
+         <input type="text"
+           className="form-control"
+           placeholder={this.props.placeholder}
+           value={this.props.filterText}
+           onChange={this.handleFilterTextInputChange}
+         />
+       </div>
     );
   }
 }

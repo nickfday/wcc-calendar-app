@@ -6,6 +6,7 @@ import CalendarSelect from './CalendarSelect';
 var Loader = require('react-loader');
 import axios from 'axios';
 import $ from 'jquery';
+import FetchApi from '../FetchApi';
 
 class CalendarList extends Component {
   constructor(props){
@@ -14,6 +15,7 @@ class CalendarList extends Component {
       exercises: [],
       loaded: false,
       filterText: '',
+      addressText: '',
       primaryMuscle: ''
       //col: ''
     };
@@ -115,23 +117,65 @@ class CalendarList extends Component {
             <a href="/" class="go-up icon-arrow-left"></a>
             <h1>Events</h1>
         </div>
-        <div className="row">
-          <form id="exerciseForm">
-            <div className="col-sm-4">
+
+      {/*Filters */}
+        <div className="">
+          <form id="exerciseForm" className="calendar-form">
+
+          <div class="row">
+            <div className="form-group col-sm-4">
               <CalendarFilter
               filterText={this.state.filterText}
               onFilterTextInput={this.handleFilterTextInput}
+              placeholder='Search for keyword'
               />
              </div>
-           <div className="col-sm-3">
+
+            <div className="form-group col-sm-4">
+              <label className="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Search by address"/>
+            </div>
+
+            <div className="form-group col-sm-2">
+              <label className="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Start Date"/>
+            </div>
+
+            <div className="form-group col-sm-2">
+              <label className="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="End Date"/>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div className="form-group col-sm-4">
+              <label className="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Event Type"/>
+            </div>
+            <div className="form-group col-sm-4">
+              <label className="sr-only" for="exampleInputEmail3">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Who it's for"/>
+            </div>
+
+          </div>
+
+
+
+           {/*<div className="col-sm-3">
              <CalendarSelect muscles={this.state.exercises} onSelectTextInput={this.handleSelectTextInput}/>
            </div>
            <div className="col-sm-2">
              <button onClick={this.handleReset} className="btn btn-primary">Reset</button>
-           </div>
+           </div> */}
+
+
            </form>
         </div>
 
+
+        		<FetchApi fetchUrl='http://alphawcc.dev/api/calendar/views/calendar_json.json'/>
             {rows}
 
         </Loader>
