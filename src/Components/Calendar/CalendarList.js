@@ -125,12 +125,18 @@ class CalendarList extends Component {
       // }
 
       //Show rows
-      rows.push( <CalendarRow events={row} key={row.u} />);
+      rows.push( <CalendarRow events={row} key={row.uuid} />);
     });
     // at loop end
    if (rows.length === 0) {
     console.log('no results');
-    rows.push(<p key={'no results'}>{noResultsText}</p>);
+    rows.push(
+      <div className="row">
+      <div className="col-sm-12">
+        <p key={'no results'}>{noResultsText}</p>
+      </div>
+      </div>
+    );
    }
 
     return(
@@ -200,9 +206,7 @@ class CalendarList extends Component {
            </form>
         </div>
 
-
-        		<FetchApi fetchUrl='http://alphawcc.dev/api/calendar/views/calendar_json.json'/>
-            {rows}
+        {rows}
 
         </Loader>
       </div>
