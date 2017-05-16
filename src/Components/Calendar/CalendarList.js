@@ -14,22 +14,36 @@ class CalendarList extends Component {
     this.state = {
       exercises: [],
       loaded: false,
-      filterText: '',
+      titleText: '',
       addressText: '',
       primaryMuscle: ''
       //col: ''
     };
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
+    this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
+
     this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSort = this.handleSort.bind(this);
     }
 
-  handleFilterTextInput(filterText) {
+  handleFilterTextInput(titleText) {
     this.setState({
-      filterText: filterText
+      titleText: titleText
     });
   }
+
+  handleAddressTextInput(addressText) {
+    this.setState({
+      addressText: addressText
+    });
+  }
+
+  //  handleAddressTextInput(filterText) {
+  //   this.setState({
+  //     addressText: addressText
+  //   });
+  // }
 
   handleSelectTextInput(primaryMuscle) {
     this.setState({
@@ -40,7 +54,7 @@ class CalendarList extends Component {
   handleReset(event) {
     event.preventDefault();
     this.setState({
-      filterText: '',
+      titleText: '',
       primaryMuscle: 'Any Primary Muscle'
     });
     $('.primaryMuscleSelect').val('Any Primary Muscle').change();
@@ -89,11 +103,20 @@ class CalendarList extends Component {
     this.state.exercises.forEach(function(row){
       //Search filter condition
       if (
-        (exerciseList.filterText !=='') &&
-        (row.title.toLowerCase().indexOf(exerciseList.filterText.toLowerCase()) === -1)
+        (exerciseList.titleText !=='') &&
+        (row.title.toLowerCase().indexOf(exerciseList.titleText.toLowerCase()) === -1)
        ) {
         return;
       }
+
+      if (
+        (exerciseList.addressText !=='') &&
+        (row.location.toLowerCase().indexOf(exerciseList.addressText.toLowerCase()) === -1)
+       ) {
+        return;
+      }
+
+
       //Primary Muscle condition
       // if (
       //   (exerciseList.title !== 'Any Primary Muscle') &&
@@ -125,15 +148,18 @@ class CalendarList extends Component {
           <div class="row">
             <div className="form-group col-sm-4">
               <CalendarFilter
-              filterText={this.state.filterText}
+              filterText={this.state.titleText}
               onFilterTextInput={this.handleFilterTextInput}
               placeholder='Search for keyword'
               />
              </div>
 
             <div className="form-group col-sm-4">
-              <label className="sr-only" for="exampleInputEmail3">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Search by address"/>
+            <CalendarFilter
+              addressText={this.state.addressText}
+              onFilterTextInput={this.handleAddressTextInput}
+              placeholder='Search by address'
+            />
             </div>
 
             <div className="form-group col-sm-2">
