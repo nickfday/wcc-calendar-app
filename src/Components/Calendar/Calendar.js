@@ -103,7 +103,7 @@ class Calendar extends Component {
             <h1>Events</h1>
         </div>
 
-      {/*Filters */}
+      {/*Filters - Move into Filter Component*/}
         <div className="">
           <form id="exerciseForm" className="calendar-form">
           <div class="row">
@@ -128,7 +128,7 @@ class Calendar extends Component {
 
           </div>
         </form>
-      </div>
+      </div>{/*End Filters */}
 
       <CalendarList events={this.state} />
     </Loader>
