@@ -23,6 +23,7 @@
     "create-react-app-sass": "^1.1.0",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^7.0.0",
+    "react-date-picker": "^5.3.28",
     "react-loader": "^2.4.0",
     "react-scripts": "0.9.3"
   },

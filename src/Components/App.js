@@ -5,6 +5,7 @@ import './app.css';
 import Home from './Home';
 import Footer from './Footer';
 import CalendarList from './Calendar/CalendarList';
+import Calendar from './Calendar/Calendar';
 import CalendarSingle from './Calendar/CalendarSingle';
 
 const NoMatch = ({ location }) => (
@@ -20,7 +21,7 @@ class App extends Component {
 	  	<div>
 	  		{<Layout />}
 	  		<Switch>
-			    <Route exact path="/" component={CalendarList}/>
+			    <Route exact path="/" component={Calendar}/>
 			    <Route exact path="/event/:id" component={CalendarSingle} />
 			    <Route component={NoMatch}/>
 		    </Switch>

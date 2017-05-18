@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CalendarFilter extends Component {
+class TextBox extends Component {
   constructor(props) {
     super(props);
     this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this);
@@ -25,4 +25,4 @@ class CalendarFilter extends Component {
   }
 }
 
-export default CalendarFilter;
+export default TextBox;

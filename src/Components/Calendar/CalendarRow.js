@@ -68,7 +68,6 @@ class CalendarRow extends Component {
               {eventYear}      </div>
           </div>
         </div>
-
       </div>
 
     );
