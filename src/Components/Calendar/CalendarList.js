@@ -7,7 +7,6 @@ class CalendarList extends Component {
     let eventItems = [];
     let emptyText = [];
     let eventArray = this.props.events;
-    console.log(eventArray);
     const noResultsText = "No results - please adjust filters";
 
     eventArray.events.forEach(function(eventItem){
@@ -51,7 +50,6 @@ class CalendarList extends Component {
 
     // at loop end
    if (eventItems.length === 0) {
-    console.log('no results');
     eventItems.push(
       <div className="eventItem">
       <div className="col-sm-12">
