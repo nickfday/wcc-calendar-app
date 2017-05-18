@@ -11,6 +11,7 @@ class TextBox extends Component {
   }
 
   render() {
+    console.log(this.props);
     return(
        <div class="form-group">
          <label className="sr-only" for="exampleInputEmail3">{this.props.placeholder}</label>

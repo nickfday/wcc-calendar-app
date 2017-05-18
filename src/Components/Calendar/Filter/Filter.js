@@ -7,7 +7,28 @@ class Filter extends Component {
   render() {
     return(
       <div>
+       <div className="">
+          <form id="exerciseForm" className="calendar-form">
+          <div class="row">
+            <div className="form-group col-sm-4">
+            <TextBox
+              filterText={this.props.filterText}
+              onFilterTextInput={this.props.onFilterTextInput}
+              placeholder='Search for keyword on filter'
+              calenderState={this.props.calendarState}
+            />
+            </div>
+            <div className="form-group col-sm-4">
+              <TextBox
+                filterText={this.props.filterText}
+                onFilterTextInput={this.props.onAddressTextInput}
+                placeholder='Search by address on filter'
+              />
+            </div>
 
+          </div>
+        </form>
+      </div>{/*End Filters */}
 
         <div className="form-group col-sm-2">
         <label className="sr-only" for="exampleInputEmail3">Email address</label>

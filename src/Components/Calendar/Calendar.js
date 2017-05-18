@@ -103,34 +103,13 @@ class Calendar extends Component {
             <h1>Events</h1>
         </div>
 
-      {/*Filters - Move into Filter Component*/}
-        <div className="">
-          <form id="exerciseForm" className="calendar-form">
-          <div class="row">
-
-            <div className="form-group col-sm-4">
-              <TextBox
-                filterText={this.state.titleText}
-                onFilterTextInput={this.handleFilterTextInput}
-                placeholder='Search for keyword'
-              />
-            </div>
-            <div className="form-group col-sm-4">
-              <TextBox
-                addressText={this.state.addressText}
-                onFilterTextInput={this.handleAddressTextInput}
-                placeholder='Search by address'
-              />
-
-            </div>
-
-            <Filter />
-
-          </div>
-        </form>
-      </div>{/*End Filters */}
+      <Filter
+      calenderState={this.state}
+      onFilterTextInput={this.handleFilterTextInput}
+      onAddressTextInput={this.handleAddressTextInput}/>
 
       <CalendarList events={this.state} />
+
     </Loader>
   </div>
     );

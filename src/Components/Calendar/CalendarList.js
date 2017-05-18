@@ -9,7 +9,7 @@ class CalendarList extends Component {
     let eventArray = this.props.events;
     const noResultsText = "No results - please adjust filters";
 
-    eventArray.events.forEach(function(eventItem){
+    eventArray.events.map((eventItem) => {
       //Search filter condition
       if (
         (eventArray.titleText !=='') &&
