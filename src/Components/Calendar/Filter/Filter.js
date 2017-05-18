@@ -43,11 +43,19 @@ class Filter extends Component {
       <div class="row">
         <div className="form-group col-sm-4">
           <label className="sr-only" for="exampleInputEmail3">Even Type</label>
-          <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Event Type"/>
+          <TextBox
+                filterText={this.props.filterText}
+                onFilterTextInput={this.props.onEventTypeInput}
+                placeholder='Event Type'
+              />
         </div>
         <div className="form-group col-sm-4">
           <label className="sr-only" for="exampleInputEmail3">Who it's for</label>
-          <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Who it's for"/>
+          <TextBox
+                filterText={this.props.filterText}
+                onFilterTextInput={this.props.onAudienceInput}
+                placeholder='who it is for'
+              />
         </div>
       </div>
 

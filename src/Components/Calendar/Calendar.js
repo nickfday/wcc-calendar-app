@@ -21,11 +21,15 @@ class Calendar extends Component {
       loaded: false,
       titleText: '',
       addressText: '',
-      primaryMuscle: ''
+      primaryMuscle: '',
+      eventType: '',
+      audience: '',
       //col: ''
     };
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
+    this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
+    this.handleAudienceInput = this.handleAudienceInput.bind(this);
 
     this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
@@ -41,6 +45,18 @@ class Calendar extends Component {
   handleAddressTextInput(addressText) {
     this.setState({
       addressText: addressText
+    });
+  }
+
+  handleEventTypeInput(eventType) {
+    this.setState({
+      eventType: eventType
+    });
+  }
+
+  handleAudienceInput(audience) {
+    this.setState({
+      audience: audience
     });
   }
 
@@ -106,7 +122,10 @@ class Calendar extends Component {
       <Filter
       calenderState={this.state}
       onFilterTextInput={this.handleFilterTextInput}
-      onAddressTextInput={this.handleAddressTextInput}/>
+      onAddressTextInput={this.handleAddressTextInput}
+      onEventTypeInput={this.handleEventTypeInput}
+      onAudienceInput={this.handleAudienceInput}
+      />
 
       <CalendarList events={this.state} />
 

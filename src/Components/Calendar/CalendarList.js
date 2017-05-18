@@ -7,7 +7,7 @@ class CalendarList extends Component {
     let eventItems = [];
     let emptyText = [];
     let eventArray = this.props.events;
-    const noResultsText = "No results - please adjust filters";
+    const noResultsText = 'No results - please adjust filters';
 
     eventArray.events.map((eventItem) => {
       //Search filter condition
@@ -17,10 +17,25 @@ class CalendarList extends Component {
        ) {
         return;
       }
-
+      //Address Filter condition
       if (
         (eventArray.addressText !=='') &&
         (eventItem.location.toLowerCase().indexOf(eventArray.addressText.toLowerCase()) === -1)
+       ) {
+        return;
+      }
+      //Event Filter condition
+      if (
+        (eventArray.eventType !=='') &&
+        (eventItem.event_type.toLowerCase().indexOf(eventArray.eventType.toLowerCase()) === -1)
+       ) {
+        return;
+      }
+
+      //Audience Filter condition
+      if (
+        (eventArray.audience !=='') &&
+        (eventItem.audience.toLowerCase().indexOf(eventArray.audience.toLowerCase()) === -1)
        ) {
         return;
       }
