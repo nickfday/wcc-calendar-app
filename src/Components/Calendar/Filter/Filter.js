@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import TextBox from './TextBox';
-
+import MySelect from './MySelect';
 
 class Filter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+     value: ''
+    }
+  }
+
+  logChange(val) {
+    console.log("Selected: " + val.value);
+    this.setState({value: val.value});
+  }
+
+
 
   render() {
+
     return(
       <div>
        <div className="">
@@ -42,12 +56,16 @@ class Filter extends Component {
 
       <div class="row">
         <div className="form-group col-sm-4">
-          <label className="sr-only" for="exampleInputEmail3">Even Type</label>
-          <TextBox
-                filterText={this.props.filterText}
-                onFilterTextInput={this.props.onEventTypeInput}
-                placeholder='Event Type'
-              />
+
+          <label className="sr-only" for="exampleInputEmail3">Event Type</label>
+
+          <MySelect
+            data={this.props.calenderState.eventTypes}
+            selectedItems={this.props.calenderState.selectedEventTypes}
+            handleSelectedItem={this.props.handleSelectedEventTypes}
+            placeholder='Select Event Type'
+          />
+
         </div>
         <div className="form-group col-sm-4">
           <label className="sr-only" for="exampleInputEmail3">Who it's for</label>

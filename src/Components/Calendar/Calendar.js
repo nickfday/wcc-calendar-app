@@ -18,6 +18,8 @@ class Calendar extends Component {
     super(props);
     this.state = {
       events: [],
+      eventTypes: [],
+      selectedEventTypes: '',
       loaded: false,
       titleText: '',
       addressText: '',
@@ -29,6 +31,7 @@ class Calendar extends Component {
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
     this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
+    this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
     this.handleAudienceInput = this.handleAudienceInput.bind(this);
 
     this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
@@ -51,6 +54,12 @@ class Calendar extends Component {
   handleEventTypeInput(eventType) {
     this.setState({
       eventType: eventType
+    });
+  }
+
+  handleSelectedEventTypes(selectedEventTypes) {
+    this.setState({
+      selectedEventTypes: selectedEventTypes
     });
   }
 
@@ -99,17 +108,60 @@ class Calendar extends Component {
     });
   }
 
-
-  componentWillMount(){
-    this.getEvents();
+  getEventTypes(){
+    const self = this;
+    axios.get('http://alphawcc.dev/api/calendar/taxonomy_term.json?parameters[vid]=11')
+    .then(function(response) {
+      self.setState({eventTypes: response.data, loaded: true}, function(){
+        console.table(response.data);
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   }
+
+  // improve code
+    // var muscles = [];
+    // var newMuscles = [];
+    // var newnewmuscles = [];
+    // this.props.muscles.map(function(muscle, index){
+    //   muscles.push(muscle.primary_muscle);
+    // })
+    // newMuscles = Array.from(new Set(muscles));
+    // newMuscles.map(function(newmuscle, index){
+    //   newnewmuscles.push(
+    //     <option key={index}>{newmuscle}</option>
+    //     );
+    // });
+
+
+
+
+
+
+  // componentWillMount(){
+  //   this.getEvents();
+  // }
 
   componentDidMount(){
     this.getEvents();
+    this.getEventTypes();
   }
 
 
   render() {
+
+      var options = [
+        { value: 'one', label: 'One' },
+        { value: 'two', label: 'Two' }
+      ];
+
+      function logChange(val) {
+        console.log("Selected: " + val);
+      }
+
+
 
     return(
       <div className="content exercise-list container">
@@ -125,6 +177,9 @@ class Calendar extends Component {
       onAddressTextInput={this.handleAddressTextInput}
       onEventTypeInput={this.handleEventTypeInput}
       onAudienceInput={this.handleAudienceInput}
+      eventTypes={this.state.eventTypes}
+      handleSelectedEventTypes={this.handleSelectedEventTypes}
+      selectedEventTypes={this.state.selectedEventTypes}
       />
 
       <CalendarList events={this.state} />

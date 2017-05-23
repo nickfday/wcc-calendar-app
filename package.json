@@ -12,10 +12,12 @@
     "react-addons-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.5.4",
+    "react-dropdown": "^1.2.3",
     "react-router-dom": "^4.1.1",
     "react-scripts-sass": "^0.8.6",
     "react-scrollable-anchor": "^0.4.2",
     "react-scrollspy": "^3.0.2",
+    "react-select": "^1.0.0-rc.4",
     "react-spinkit": "^2.1.1",
     "reactstrap": "^4.2.0"
   },

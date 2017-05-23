@@ -25,9 +25,17 @@ class CalendarList extends Component {
         return;
       }
       //Event Filter condition
+      // if (
+      //   (eventArray.eventType !=='') &&
+      //   (eventItem.event_type.toLowerCase().indexOf(eventArray.eventType.toLowerCase()) === -1)
+      //  ) {
+      //   return;
+      // }
+      console.log(eventItem.event_type);
+      console.log(eventArray.selectedEventTypes.value);
       if (
-        (eventArray.eventType !=='') &&
-        (eventItem.event_type.toLowerCase().indexOf(eventArray.eventType.toLowerCase()) === -1)
+        (eventArray.selectedEventTypes !='') &&
+        (eventItem.event_type != eventArray.selectedEventTypes.value)
        ) {
         return;
       }
