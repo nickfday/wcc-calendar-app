@@ -10,7 +10,11 @@ class MySelect extends React.Component{
   }
 
   logChange(val) {
+    console.log(val);
     this.props.handleSelectedItem(val);
+    if (val == null) {
+      this.props.handleSelectedItem('');
+    }
   }
 
   render(){

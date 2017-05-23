@@ -66,6 +66,13 @@ class Filter extends Component {
             placeholder='Select Event Type'
           />
 
+          {/*<MySelect
+            data={this.props.calenderState.audience}
+            selectedItems={this.props.calenderState.selectedAudienceTypes}
+            handleSelectedItem={this.props.handleSelectedAudienceTypes}
+            placeholder='Select Audience Type'
+          /> */}
+
         </div>
         <div className="form-group col-sm-4">
           <label className="sr-only" for="exampleInputEmail3">Who it's for</label>

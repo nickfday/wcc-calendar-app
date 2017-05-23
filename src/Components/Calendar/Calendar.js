@@ -26,6 +26,7 @@ class Calendar extends Component {
       primaryMuscle: '',
       eventType: '',
       audience: '',
+      selectedAudienceTypes: '',
       //col: ''
     };
     this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
@@ -33,6 +34,7 @@ class Calendar extends Component {
     this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
     this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
     this.handleAudienceInput = this.handleAudienceInput.bind(this);
+    this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(this);
 
     this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
@@ -60,6 +62,12 @@ class Calendar extends Component {
   handleSelectedEventTypes(selectedEventTypes) {
     this.setState({
       selectedEventTypes: selectedEventTypes
+    });
+  }
+
+  handleSelectedAudienceTypes(selectedAudienceTypes) {
+    this.setState({
+      selectedAudienceTypes: selectedAudienceTypes
     });
   }
 
@@ -121,6 +129,19 @@ class Calendar extends Component {
     });
   }
 
+  getAudienceTypes(){
+    const self = this;
+    axios.get('http://alphawcc.dev/api/calendar/taxonomy_term.json?parameters[vid]=12')
+    .then(function(response) {
+      self.setState({audienceTypes: response.data, loaded: true}, function(){
+        console.table(response.data);
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
+
   // improve code
     // var muscles = [];
     // var newMuscles = [];
@@ -147,6 +168,7 @@ class Calendar extends Component {
   componentDidMount(){
     this.getEvents();
     this.getEventTypes();
+    this.getAudienceTypes();
   }
 
 
@@ -178,8 +200,11 @@ class Calendar extends Component {
       onEventTypeInput={this.handleEventTypeInput}
       onAudienceInput={this.handleAudienceInput}
       eventTypes={this.state.eventTypes}
+      audienceTypes={this.state.audience}
       handleSelectedEventTypes={this.handleSelectedEventTypes}
       selectedEventTypes={this.state.selectedEventTypes}
+      handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
+      selectedAudienceTypes={this.state.selectedAudienceTypes}
       />
 
       <CalendarList events={this.state} />

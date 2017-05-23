@@ -40,13 +40,23 @@ class CalendarList extends Component {
         return;
       }
 
+      //console.log(eventItem.audience);
+      //console.log(eventArray.selectedAudienceTypes.value);
+
+      // if (
+      //   (eventArray.selectedAudienceTypes !='') &&
+      //   (eventItem.audience != eventArray.selectedAudienceTypes.value)
+      //  ) {
+      //   return;
+      // }
+
       //Audience Filter condition
-      if (
-        (eventArray.audience !=='') &&
-        (eventItem.audience.toLowerCase().indexOf(eventArray.audience.toLowerCase()) === -1)
-       ) {
-        return;
-      }
+      // if (
+      //   (eventArray.audience !=='') &&
+      //   (eventItem.audience.toLowerCase().indexOf(eventArray.audience.toLowerCase()) === -1)
+      //  ) {
+      //   return;
+      // }
 
 
       //Primary Muscle condition
