@@ -36,7 +36,7 @@ class Calendar extends Component {
     this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSort = this.handleSort.bind(this);
-    }
+  }
 
   handleTitleTextInput(titleText) {
     this.setState({
@@ -80,7 +80,7 @@ class Calendar extends Component {
     });
   }
 
-  handleReset(titleText) {
+  handleReset() {
     this.setState({
       titleText: '',
       addressText: '',
@@ -138,29 +138,6 @@ class Calendar extends Component {
       console.log(error);
     });
   }
-
-  // improve code
-    // var muscles = [];
-    // var newMuscles = [];
-    // var newnewmuscles = [];
-    // this.props.muscles.map(function(muscle, index){
-    //   muscles.push(muscle.primary_muscle);
-    // })
-    // newMuscles = Array.from(new Set(muscles));
-    // newMuscles.map(function(newmuscle, index){
-    //   newnewmuscles.push(
-    //     <option key={index}>{newmuscle}</option>
-    //     );
-    // });
-
-
-
-
-
-
-  // componentWillMount(){
-  //   this.getEvents();
-  // }
 
   componentDidMount(){
     this.getEvents();
