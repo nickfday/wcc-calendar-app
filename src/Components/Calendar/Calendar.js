@@ -18,18 +18,15 @@ class Calendar extends Component {
     super(props);
     this.state = {
       events: [],
-      eventTypes: [],
-      selectedEventTypes: '',
       loaded: false,
       titleText: '',
       addressText: '',
-      primaryMuscle: '',
-      eventType: '',
+      eventTypes: [],
       audienceTypes: [],
       selectedAudienceTypes: '',
-      //col: ''
+      selectedEventTypes: '',
     };
-    this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
+    this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
     this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
     this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
@@ -41,7 +38,7 @@ class Calendar extends Component {
     this.handleSort = this.handleSort.bind(this);
     }
 
-  handleFilterTextInput(titleText) {
+  handleTitleTextInput(titleText) {
     this.setState({
       titleText: titleText
     });
@@ -82,14 +79,14 @@ class Calendar extends Component {
       primaryMuscle: primaryMuscle
     });
   }
-  // RESET STATE FUNCTION
-  handleReset(event) {
-    event.preventDefault();
+
+  handleReset(titleText) {
     this.setState({
       titleText: '',
-      primaryMuscle: 'Any Primary Muscle'
+      addressText: '',
+      selectedEventTypes: '',
+      selectedAudienceTypes: '',
     });
-    $('.primaryMuscleSelect').val('Any Primary Muscle').change();
   }
 
   handleSort(col) {
@@ -196,12 +193,14 @@ class Calendar extends Component {
             <h1>Events</h1>
         </div>
 
-        <p>Browse the events calendar to find out about big council-run events</p>
+        <p>Browse the events calendar to find out about big council-run events. We also list a wide variety of groups, meet-ups, classes and workshops run by and on behalf of the Westminster community.</p>
       <div className="row">
         <div className="col-sm-3">
           <Filter
           calenderState={this.state}
-          onFilterTextInput={this.handleFilterTextInput}
+          titleText={this.state.titleText}
+          addressText={this.state.addressText}
+          onTitleTextInput={this.handleTitleTextInput}
           onAddressTextInput={this.handleAddressTextInput}
           onEventTypeInput={this.handleEventTypeInput}
           onAudienceInput={this.handleAudienceInput}
@@ -215,7 +214,7 @@ class Calendar extends Component {
         </div>
 
         <div className="col-sm-9">
-          <CalendarList events={this.state} />
+          <CalendarList events={this.state} handleReset={this.handleReset} />
         </div>
       </div>
 

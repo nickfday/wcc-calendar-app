@@ -4,11 +4,6 @@ import 'react-select/dist/react-select.css';
 
 class MySelect extends React.Component{
 
-  constructor(){
-     super();
-     this.logChange = this.logChange.bind(this);
-  }
-
   logChange(val) {
     console.log(val);
     this.props.handleSelectedItem(val);

@@ -3,6 +3,13 @@ import { Table } from 'reactstrap';
 import CalendarRow from './CalendarRow';
 
 class CalendarList extends Component {
+
+  resetFilters(event) {
+    event.preventDefault();
+    //this.props.handleReset();
+    this.props.handleReset('');
+  }
+
   render() {
     let eventItems = [];
     let emptyText = [];
@@ -75,22 +82,22 @@ class CalendarList extends Component {
     eventItems.push(
       <div className="eventItem">
       <div className="col-sm-12">
-        <p key={'no results'}>{noResultsText}</p>
+        <p key={'no results'}>{noResultsText} <a href="" onClick={this.resetFilters.bind(this)}>Reset</a></p>
       </div>
       </div>
     );
    }
 
     // at loop end
-   if (eventItems.length === 0) {
-    eventItems.push(
-      <div className="eventItem">
-      <div className="col-sm-12">
-        <p key={'no results'}>{noResultsText}</p>
-      </div>
-      </div>
-    );
-   }
+   // if (eventItems.length === 0) {
+   //  eventItems.push(
+   //    <div className="eventItem">
+   //    <div className="col-sm-12">
+   //      <p key={'no results'}>{noResultsText}</p>
+   //    </div>
+   //    </div>
+   //  );
+   // }
 
     return(
       <div className="">

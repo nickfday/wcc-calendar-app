@@ -3,19 +3,6 @@ import TextBox from './TextBox';
 import MySelect from './MySelect';
 
 class Filter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-     value: ''
-    }
-  }
-
-  logChange(val) {
-    console.log("Selected: " + val.value);
-    this.setState({value: val.value});
-  }
-
-
 
   render() {
 
@@ -30,15 +17,15 @@ class Filter extends Component {
 
 
             <TextBox
-              filterText={this.props.filterText}
-              onFilterTextInput={this.props.onFilterTextInput}
+              filterText={this.props.titleText}
+              onFilterTextInput={this.props.onTitleTextInput}
               placeholder='Search for keyword on filter'
-              calenderState={this.props.calendarState}
+              //calenderState={this.props.calendarState}
             />
 
 
               <TextBox
-                filterText={this.props.filterText}
+                filterText={this.props.addressText}
                 onFilterTextInput={this.props.onAddressTextInput}
                 placeholder='Search by address on filter'
               />
