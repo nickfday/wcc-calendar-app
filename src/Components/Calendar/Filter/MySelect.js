@@ -19,13 +19,16 @@ class MySelect extends React.Component{
 
   render(){
 
-    var options = [];
+    let options = [];
+    console.log(this.props.data);
     this.props.data.map(function(element){
       options.push({
         value: element.name,
         label: element.name
       });
     });
+    console.log(options);
+
 
     return(
 
@@ -36,6 +39,7 @@ class MySelect extends React.Component{
           onChange={this.logChange.bind(this)}
           multi={false}
           placeholder={this.props.placeholder}
+          className="form-group"
       />
     );
   }

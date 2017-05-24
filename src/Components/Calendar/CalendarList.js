@@ -43,12 +43,12 @@ class CalendarList extends Component {
       //console.log(eventItem.audience);
       //console.log(eventArray.selectedAudienceTypes.value);
 
-      // if (
-      //   (eventArray.selectedAudienceTypes !='') &&
-      //   (eventItem.audience != eventArray.selectedAudienceTypes.value)
-      //  ) {
-      //   return;
-      // }
+      if (
+        (eventArray.selectedAudienceTypes !='') &&
+        (eventItem.audience != eventArray.selectedAudienceTypes.value)
+       ) {
+        return;
+      }
 
       //Audience Filter condition
       // if (
@@ -93,8 +93,7 @@ class CalendarList extends Component {
    }
 
     return(
-      <div className="col-sm-12">
-        <h2>Calendar List</h2>
+      <div className="">
         { eventItems }
       </div>
     );

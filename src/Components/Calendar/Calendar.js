@@ -25,7 +25,7 @@ class Calendar extends Component {
       addressText: '',
       primaryMuscle: '',
       eventType: '',
-      audience: '',
+      audienceTypes: [],
       selectedAudienceTypes: '',
       //col: ''
     };
@@ -187,27 +187,37 @@ class Calendar extends Component {
 
     return(
       <div className="content exercise-list container">
+      <div className="sp-breadcrumbs">
+
+      </div>
       <Loader loaded={this.state.loaded}>
         <div className="sp-head row">
-            <a href="/" class="go-up icon-arrow-left"></a>
+            <a href="/" className="go-up icon-arrow-left"></a>
             <h1>Events</h1>
         </div>
 
-      <Filter
-      calenderState={this.state}
-      onFilterTextInput={this.handleFilterTextInput}
-      onAddressTextInput={this.handleAddressTextInput}
-      onEventTypeInput={this.handleEventTypeInput}
-      onAudienceInput={this.handleAudienceInput}
-      eventTypes={this.state.eventTypes}
-      audienceTypes={this.state.audience}
-      handleSelectedEventTypes={this.handleSelectedEventTypes}
-      selectedEventTypes={this.state.selectedEventTypes}
-      handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
-      selectedAudienceTypes={this.state.selectedAudienceTypes}
-      />
+        <p>Browse the events calendar to find out about big council-run events</p>
+      <div className="row">
+        <div className="col-sm-3">
+          <Filter
+          calenderState={this.state}
+          onFilterTextInput={this.handleFilterTextInput}
+          onAddressTextInput={this.handleAddressTextInput}
+          onEventTypeInput={this.handleEventTypeInput}
+          onAudienceInput={this.handleAudienceInput}
+          eventTypes={this.state.eventTypes}
+          audienceTypes={this.state.audience}
+          handleSelectedEventTypes={this.handleSelectedEventTypes}
+          selectedEventTypes={this.state.selectedEventTypes}
+          handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
+          selectedAudienceTypes={this.state.selectedAudienceTypes}
+          />
+        </div>
 
-      <CalendarList events={this.state} />
+        <div className="col-sm-9">
+          <CalendarList events={this.state} />
+        </div>
+      </div>
 
     </Loader>
   </div>

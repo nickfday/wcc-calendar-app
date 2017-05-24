@@ -19,7 +19,20 @@ class CalendarRow extends Component {
     const eventTime = event.date.slice(11,16);
 
     return (
-      <div className="event-row row">
+      <div className="event-row clearfix">
+        <div className="col-xs-2">
+          <div className="date-info pull-left">
+            <div className="custom-dayOfWeek">
+              Thu      </div>
+            <div className="custom-day">
+              {eventDay}      </div>
+            <div className="custom-month">
+              {eventMonth}      </div>
+            <div className="custom-year">
+              {eventYear}      </div>
+          </div>
+        </div>
+
         <div className="event-info col-xs-10">
          <h3>
            <Link to={{
@@ -53,21 +66,9 @@ class CalendarRow extends Component {
          <div>
            {event.audience}
          </div>
+      </div>
 
-         </div>
 
-         <div className="col-xs-2 pull-right">
-          <div className="date-info">
-            <div className="custom-dayOfWeek">
-              Thu      </div>
-            <div className="custom-day">
-              {eventDay}      </div>
-            <div className="custom-month">
-              {eventMonth}      </div>
-            <div className="custom-year">
-              {eventYear}      </div>
-          </div>
-        </div>
       </div>
 
     );
