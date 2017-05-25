@@ -2,9 +2,30 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './calendar-list.css';
+import { Button, Modal } from 'react-bootstrap';
 
 
 class CalendarRow extends Component {
+
+  constructor(props) {
+    super();
+    this.state = {
+      showModal: false
+    }
+    this.close = this.close.bind(this);
+    this.open = this.open.bind(this);
+  }
+
+  close() {
+    //event.preventDefault();
+    this.setState({ showModal: false });
+  }
+
+  open() {
+    //event.preventDefault();
+    this.setState({ showModal: true });
+  }
+
   render() {
     const event = this.props.events;
     const eventURL = event.uuid.replace(/\s+/g, '-').toLowerCase();
@@ -56,7 +77,29 @@ class CalendarRow extends Component {
          </div> */}
           <br />
          <div>
-           {event.location}
+
+
+         <div className="cursor-pointer" onClick={this.open}>
+         <span className="glyphicon glyphicon-globe" aria-hidden="true"></span> {event.location}
+         </div>
+
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton>
+            <Modal.Title>{event.location}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
+          <iframe width="100%" height="400" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src="https://maps.google.com/maps?hl=en&amp;q=' + {event.location} + '&amp;z=14&amp;t=m&amp;output=embed">
+           </iframe>
+
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+
+
+
          </div>
           <br />
          <div className="event-item">
