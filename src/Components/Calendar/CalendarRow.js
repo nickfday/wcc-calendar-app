@@ -39,6 +39,27 @@ class CalendarRow extends Component {
     //extract time
     const eventTime = event.date.slice(11,16);
 
+    let audienceItem = event.audience.split(',').map(function(element){
+      console.log('element: ' + element);
+      return(
+        <div className="audience-item">
+          {element}
+        </div>
+        );
+    });
+
+    let eventItem = event.event_type.split(',').map(function(element){
+      console.log('element: ' + element);
+      return(
+        <div className="event-item">
+          {element}
+        </div>
+        );
+    });
+
+
+    //event.audienceSeperated
+
     return (
       <div className="event-row clearfix">
         <div className="col-xs-2">
@@ -87,29 +108,24 @@ class CalendarRow extends Component {
           <Modal.Header closeButton>
             <Modal.Title>{event.location}</Modal.Title>
           </Modal.Header>
+
           <Modal.Body>
-
-          <iframe width="100%" height="400" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src="https://maps.google.com/maps?hl=en&amp;q=' + {event.location} + '&amp;z=14&amp;t=m&amp;output=embed">
-           </iframe>
-
+            <iframe width="100%" height="400" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src="https://maps.google.com/maps?hl=en&amp;q=' + {event.location} + '&amp;z=14&amp;t=m&amp;output=embed">
+             </iframe>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
-
-
-
          </div>
           <br />
-         <div className="event-item">
-           {event.event_type}
-         </div>
+         {eventItem}
           <br />
           <div className="clearfix"></div>
-         <div className="audience-item">
-           {event.audience}
-         </div>
+
+          {audienceItem}
+
+
       </div>
 
        <div className="col-xs-3">
