@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { Table } from 'reactstrap';
-import CalendarRow from './CalendarRow';
 import Filter from './Filter/Filter';
-import TextBox from './Filter/TextBox';
-import CalendarSelect from './CalendarSelect';
 var Loader = require('react-loader');
 import axios from 'axios';
-import $ from 'jquery';
-import FetchApi from '../FetchApi';
 import CalendarList from './CalendarList';
 
 //import { DateField } from 'react-date-picker';
@@ -118,7 +112,6 @@ class Calendar extends Component {
     axios.get('http://alphawcc.dev/api/calendar/taxonomy_term.json?parameters[vid]=11')
     .then(function(response) {
       self.setState({eventTypes: response.data, loaded: true}, function(){
-        console.table(response.data);
       });
     })
     .catch(function(error) {
@@ -131,7 +124,6 @@ class Calendar extends Component {
     axios.get('http://alphawcc.dev/api/calendar/taxonomy_term.json?parameters[vid]=12')
     .then(function(response) {
       self.setState({audienceTypes: response.data, loaded: true}, function(){
-        console.table(response.data);
       });
     })
     .catch(function(error) {
@@ -175,14 +167,13 @@ class Calendar extends Component {
                 handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
                 selectedAudienceTypes={this.state.selectedAudienceTypes}
                 handleReset={this.handleReset}
-                />
-              </div>
+              />
+            </div>
 
-              <div className="col-sm-9">
-                <CalendarList events={this.state} handleReset={this.handleReset} />
-              </div>
+            <div className="col-sm-9">
+              <CalendarList events={this.state} handleReset={this.handleReset} />
+            </div>
           </div>
-
         </Loader>
     </div>
     );

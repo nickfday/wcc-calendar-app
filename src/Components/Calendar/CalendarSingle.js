@@ -14,7 +14,7 @@ class CalendarSingle extends Component {
     //extract month
     const eventMonth = event.date.slice(5,7);
     //extract time
-    const eventTime = event.date.slice(11,16);
+    //const eventTime = event.date.slice(11,16);
 
         return (
             <div className="content exercise-detail container">

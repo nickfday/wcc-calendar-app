@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import {  BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Layout from './Layout';
 import './app.css';
-import Home from './Home';
 import Footer from './Footer';
-import CalendarList from './Calendar/CalendarList';
 import Calendar from './Calendar/Calendar';
 import CalendarSingle from './Calendar/CalendarSingle';
 
