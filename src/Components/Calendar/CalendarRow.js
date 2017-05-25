@@ -33,7 +33,7 @@ class CalendarRow extends Component {
           </div>
         </div>
 
-        <div className="event-info col-xs-10">
+        <div className="event-info col-xs-7">
          <h3>
            <Link to={{
              pathname: `/event/${eventURL}`,
@@ -51,22 +51,29 @@ class CalendarRow extends Component {
          </Link>
          </div>
           <br />
-         <div>
+         {/*<div>
           {eventDay} {eventMonth} {eventYear} {eventTime}
-         </div>
+         </div> */}
           <br />
          <div>
            {event.location}
          </div>
           <br />
-         <div>
+         <div className="event-item">
            {event.event_type}
          </div>
           <br />
-         <div>
+          <div className="clearfix"></div>
+         <div className="audience-item">
            {event.audience}
          </div>
       </div>
+
+       <div className="col-xs-3">
+       <div>
+           <img src={event.featured_image} />
+         </div>
+       </div>
 
 
       </div>
