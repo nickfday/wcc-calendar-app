@@ -33,7 +33,6 @@ class Calendar extends Component {
     this.handleAudienceInput = this.handleAudienceInput.bind(this);
     this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(this);
 
-    this.handleSelectTextInput = this.handleSelectTextInput.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleSort = this.handleSort.bind(this);
   }
@@ -80,7 +79,8 @@ class Calendar extends Component {
     });
   }
 
-  handleReset() {
+  handleReset(event) {
+    event.preventDefault();
     this.setState({
       titleText: '',
       addressText: '',
@@ -147,56 +147,44 @@ class Calendar extends Component {
 
 
   render() {
-
-      var options = [
-        { value: 'one', label: 'One' },
-        { value: 'two', label: 'Two' }
-      ];
-
-      function logChange(val) {
-        console.log("Selected: " + val);
-      }
-
-
-
     return(
       <div className="content exercise-list container">
-      <div className="sp-breadcrumbs">
-
-      </div>
-      <Loader loaded={this.state.loaded}>
-        <div className="sp-head row">
+        <div className="sp-breadcrumbs"></div>
+        <Loader loaded={this.state.loaded}>
+          <div className="sp-head row">
             <a href="/" className="go-up icon-arrow-left"></a>
             <h1>Events</h1>
-        </div>
+          </div>
 
-        <p>Browse the events calendar to find out about big council-run events. We also list a wide variety of groups, meet-ups, classes and workshops run by and on behalf of the Westminster community.</p>
-      <div className="row">
-        <div className="col-sm-3">
-          <Filter
-          calenderState={this.state}
-          titleText={this.state.titleText}
-          addressText={this.state.addressText}
-          onTitleTextInput={this.handleTitleTextInput}
-          onAddressTextInput={this.handleAddressTextInput}
-          onEventTypeInput={this.handleEventTypeInput}
-          onAudienceInput={this.handleAudienceInput}
-          eventTypes={this.state.eventTypes}
-          audienceTypes={this.state.audience}
-          handleSelectedEventTypes={this.handleSelectedEventTypes}
-          selectedEventTypes={this.state.selectedEventTypes}
-          handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
-          selectedAudienceTypes={this.state.selectedAudienceTypes}
-          />
-        </div>
+          <p>Browse the events calendar to find out about big council-run events. We also list a wide variety of groups, meet-ups, classes and workshops run by and on behalf of the Westminster community.</p>
 
-        <div className="col-sm-9">
-          <CalendarList events={this.state} handleReset={this.handleReset} />
-        </div>
-      </div>
+          <div className="row">
+            <div className="col-sm-3">
+              <Filter
+                calenderState={this.state}
+                titleText={this.state.titleText}
+                addressText={this.state.addressText}
+                onTitleTextInput={this.handleTitleTextInput}
+                onAddressTextInput={this.handleAddressTextInput}
+                onEventTypeInput={this.handleEventTypeInput}
+                onAudienceInput={this.handleAudienceInput}
+                eventTypes={this.state.eventTypes}
+                audienceTypes={this.state.audience}
+                handleSelectedEventTypes={this.handleSelectedEventTypes}
+                selectedEventTypes={this.state.selectedEventTypes}
+                handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
+                selectedAudienceTypes={this.state.selectedAudienceTypes}
+                handleReset={this.handleReset}
+                />
+              </div>
 
-    </Loader>
-  </div>
+              <div className="col-sm-9">
+                <CalendarList events={this.state} handleReset={this.handleReset} />
+              </div>
+          </div>
+
+        </Loader>
+    </div>
     );
   }
 }
