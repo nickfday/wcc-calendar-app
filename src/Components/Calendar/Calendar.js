@@ -19,6 +19,8 @@ class Calendar extends Component {
       audienceTypes: [],
       selectedAudienceTypes: '',
       selectedEventTypes: '',
+      startDate: null,
+      endDate: null
     };
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
@@ -26,9 +28,23 @@ class Calendar extends Component {
     this.handleSelectedEventTypes = this.handleSelectedEventTypes.bind(this);
     this.handleAudienceInput = this.handleAudienceInput.bind(this);
     this.handleSelectedAudienceTypes = this.handleSelectedAudienceTypes.bind(this);
+    this.handleStartDate = this.handleStartDate.bind(this);
+    this.handleEndDate = this.handleEndDate.bind(this);
 
     this.handleReset = this.handleReset.bind(this);
     this.handleSort = this.handleSort.bind(this);
+  }
+
+  handleStartDate(startDate) {
+    this.setState({
+      startDate: startDate
+    })
+  }
+
+  handleEndDate(endDate) {
+    this.setState({
+      endDate: endDate
+    })
   }
 
   handleTitleTextInput(titleText) {
@@ -167,6 +183,10 @@ class Calendar extends Component {
                 handleSelectedAudienceTypes={this.handleSelectedAudienceTypes}
                 selectedAudienceTypes={this.state.selectedAudienceTypes}
                 handleReset={this.handleReset}
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                handleStartDate={this.handleStartDate}
+                handleEndDate={this.handleEndDate}
               />
             </div>
 

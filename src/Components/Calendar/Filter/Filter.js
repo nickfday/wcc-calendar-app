@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import TextBox from './TextBox';
 import MySelect from './MySelect';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class Filter extends Component {
 
@@ -23,14 +26,32 @@ class Filter extends Component {
             placeholder='Search by address on filter'
             />
 
-            <div className='form-group'>
-              <label className="sr-only" htmlFor="exampleInputEmail3">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Start Date"/>
+            <div className="form-group">
+              <DatePicker
+                selectsStart
+                startDate={this.props.startDate}
+                endDate={this.props.endDate}
+                className='form-control'
+                selected={this.props.startDate}
+                onChange={this.props.handleStartDate}
+                placeholderText='Start Date'
+                dateFormat="DD/MM/YYYY"
+                isClearable={true}
+              />
             </div>
 
-            <div className='form-group'>
-              <label className="sr-only" htmlFor="exampleInputEmail3">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail3" placeholder="End Date"/>
+            <div className="form-group">
+              <DatePicker
+                selectsEnd
+                startDate={this.props.startDate}
+                endDate={this.props.endDate}
+                className='form-control'
+                selected={this.props.endDate}
+                onChange={this.props.handleEndDate}
+                placeholderText='End Date'
+                dateFormat="DD/MM/YYYY"
+                isClearable={true}
+              />
             </div>
 
             <label className="sr-only" htmlFor="exampleInputEmail3">Event Type</label>
