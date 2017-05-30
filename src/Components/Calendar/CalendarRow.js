@@ -45,24 +45,21 @@ class CalendarRow extends Component {
       );
     });
 
-
-    //event.audienceSeperated
-
     return (
       <div className="event-row clearfix">
         <div className="col-xs-2">
           <div className="date-info pull-left">
             <div className="custom-dayOfWeek">
-              {moment(eventDateMoment).format("ddd")}
+              {moment(eventDateMoment).format('ddd')}
             </div>
             <div className="custom-day">
-              {moment(eventDateMoment).format("Do")}
+              {moment(eventDateMoment).format('D')}
             </div>
             <div className="custom-month">
-              {moment(eventDateMoment).format("MMM")}
+              {moment(eventDateMoment).format('MMM')}
             </div>
             <div className="custom-year">
-               {moment(eventDateMoment).format("YYYY")}
+               {moment(eventDateMoment).format('YYYY')}
             </div>
           </div>
         </div>

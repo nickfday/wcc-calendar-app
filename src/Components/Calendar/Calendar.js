@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Filter from './Filter/Filter';
 var Loader = require('react-loader');
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import CalendarList from './CalendarList';
 
 //import { DateField } from 'react-date-picker';
@@ -162,7 +163,7 @@ class Calendar extends Component {
         <div className="sp-breadcrumbs"></div>
         <Loader loaded={this.state.loaded}>
           <div className="sp-head row">
-            <a href="/" className="go-up icon-arrow-left"></a>
+            <Link to="/" className="go-up icon-arrow-left"></Link>
             <h1>Events</h1>
           </div>
 
