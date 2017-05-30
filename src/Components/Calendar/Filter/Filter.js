@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TextBox from './TextBox';
 import MySelect from './MySelect';
 import DatePicker from 'react-datepicker';
-import moment from 'moment';
+//import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class Filter extends Component {
@@ -18,12 +18,12 @@ class Filter extends Component {
             <TextBox
               filterText={this.props.titleText}
               onFilterTextInput={this.props.onTitleTextInput}
-              placeholder='Search for keyword on filter'
+              placeholder='Search by Name'
             />
             <TextBox
             filterText={this.props.addressText}
             onFilterTextInput={this.props.onAddressTextInput}
-            placeholder='Search by address on filter'
+            placeholder='Search by Address'
             />
 
             <div className="form-group">

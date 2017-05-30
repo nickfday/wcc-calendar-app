@@ -8,52 +8,41 @@ import moment from 'moment';
 
 
 class CalendarRow extends Component {
-
   constructor(props) {
     super();
     this.state = {
       showModal: false
-    }
+    };
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
   }
 
   close() {
-    //event.preventDefault();
     this.setState({ showModal: false });
   }
-
   open() {
-    //event.preventDefault();
     this.setState({ showModal: true });
   }
 
   render() {
     const event = this.props.events;
     const eventURL = event.uuid.replace(/\s+/g, '-').toLowerCase();
-
     const eventDateMoment = moment(event.date);
 
-    console.log(eventDateMoment);
-    console.log(moment(eventDateMoment).weekday());
-    console.log(moment(eventDateMoment).format("ddd"));
-
-    let audienceItem = event.audience.split(',').map(function(element){
-      console.log('element: ' + element);
+    let audienceItem = event.audience.split(',').map(function(element, index){
       return(
-        <div className="audience-item">
+        <div className="audience-item"  key={index}>
           {element}
         </div>
-        );
+      );
     });
 
-    let eventItem = event.event_type.split(',').map(function(element){
-      console.log('element: ' + element);
+    let eventItem = event.event_type.split(',').map(function(element, index){
       return(
-        <div className="event-item">
+        <div className="event-item" key={index}>
           {element}
         </div>
-        );
+      );
     });
 
 
@@ -64,13 +53,17 @@ class CalendarRow extends Component {
         <div className="col-xs-2">
           <div className="date-info pull-left">
             <div className="custom-dayOfWeek">
-              {moment(eventDateMoment).format("ddd")}      </div>
+              {moment(eventDateMoment).format("ddd")}
+            </div>
             <div className="custom-day">
-              {moment(eventDateMoment).format("Do")}      </div>
+              {moment(eventDateMoment).format("Do")}
+            </div>
             <div className="custom-month">
-              {moment(eventDateMoment).format("MMM")}      </div>
+              {moment(eventDateMoment).format("MMM")}
+            </div>
             <div className="custom-year">
-               {moment(eventDateMoment).format("YYYY")}      </div>
+               {moment(eventDateMoment).format("YYYY")}
+            </div>
           </div>
         </div>
 
@@ -79,22 +72,20 @@ class CalendarRow extends Component {
            <Link to={{
              pathname: `/event/${eventURL}`,
              state: { events: event}
-              }}>{event.title}
+           }}>
+            {event.title}
            </Link>
          </h3>
          <br />
          <div>
            {event.body}...
            <Link to={{
-           pathname: `/event/${eventURL}`,
-           state: { event: event}
+             pathname: `/event/${eventURL}`,
+             state: { events: event}
             }}>Read More
          </Link>
          </div>
           <br />
-         {/*<div>
-          {eventDay} {eventMonth} {eventYear} {eventTime}
-         </div> */}
           <br />
          <div>
 
@@ -128,8 +119,8 @@ class CalendarRow extends Component {
       </div>
 
        <div className="col-xs-3">
-       <div>
-           <img src={event.featured_image} />
+         <div>
+           <img src={event.featured_image} alt={event.featured_image_alt_text} />
          </div>
        </div>
 
