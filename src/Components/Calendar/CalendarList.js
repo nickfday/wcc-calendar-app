@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CalendarRow from './CalendarRow';
+import moment from 'moment';
+
 
 class CalendarList extends Component {
   render() {
@@ -34,6 +36,19 @@ class CalendarList extends Component {
         (eventArray.selectedAudienceTypes !=='') &&
         (eventItem.audience !== eventArray.selectedAudienceTypes.value)
        ) {
+        return;
+      }
+
+      //Date Filter condition
+      let selectedStartDate = moment(eventArray.startDate);
+      let selectedEndDate = moment(eventArray.endDate);
+      let rowDate = moment(eventItem.date);
+
+      if (selectedStartDate > rowDate) {
+        return;
+      }
+
+      if (selectedEndDate < rowDate) {
         return;
       }
 

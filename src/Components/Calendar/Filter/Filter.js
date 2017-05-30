@@ -37,6 +37,7 @@ class Filter extends Component {
                 placeholderText='Start Date'
                 dateFormat="DD/MM/YYYY"
                 isClearable={true}
+                todayButton={"Today"}
               />
             </div>
 
@@ -51,6 +52,7 @@ class Filter extends Component {
                 placeholderText='End Date'
                 dateFormat="DD/MM/YYYY"
                 isClearable={true}
+                todayButton={"Today"}
               />
             </div>
 

@@ -96,6 +96,8 @@ class Calendar extends Component {
       addressText: '',
       selectedEventTypes: '',
       selectedAudienceTypes: '',
+      startDate: null,
+      endDate: null
     });
   }
 
