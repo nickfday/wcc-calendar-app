@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './calendar-list.css';
 import { Button, Modal } from 'react-bootstrap';
+import moment from 'moment';
+
 
 
 class CalendarRow extends Component {
@@ -30,14 +32,11 @@ class CalendarRow extends Component {
     const event = this.props.events;
     const eventURL = event.uuid.replace(/\s+/g, '-').toLowerCase();
 
-    //extract year
-    const eventYear = event.date.slice(0,4);
-    //extract day
-    const eventDay = event.date.slice(8, 11);
-    //extract month
-    const eventMonth = event.date.slice(5,7);
-    //extract time
-    const eventTime = event.date.slice(11,16);
+    const eventDateMoment = moment(event.date);
+
+    console.log(eventDateMoment);
+    console.log(moment(eventDateMoment).weekday());
+    console.log(moment(eventDateMoment).format("ddd"));
 
     let audienceItem = event.audience.split(',').map(function(element){
       console.log('element: ' + element);
@@ -65,13 +64,13 @@ class CalendarRow extends Component {
         <div className="col-xs-2">
           <div className="date-info pull-left">
             <div className="custom-dayOfWeek">
-              Thu      </div>
+              {moment(eventDateMoment).format("ddd")}      </div>
             <div className="custom-day">
-              {eventDay}      </div>
+              {moment(eventDateMoment).format("Do")}      </div>
             <div className="custom-month">
-              {eventMonth}      </div>
+              {moment(eventDateMoment).format("MMM")}      </div>
             <div className="custom-year">
-              {eventYear}      </div>
+               {moment(eventDateMoment).format("YYYY")}      </div>
           </div>
         </div>
 
