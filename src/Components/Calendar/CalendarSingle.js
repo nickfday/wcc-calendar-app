@@ -23,6 +23,23 @@ class CalendarSingle extends Component {
   open() {
     this.setState({ showModal: true });
   }
+
+  // Render endTime only if differs to startTime
+  renderTime() {
+    let startTime = moment(this.props.location.state.events.date).format('h:ma');
+    let endTime = moment(this.props.location.state.events.end_date).format('h:ma');
+      if (startTime === endTime) {
+        return(
+          <span>{startTime}</span>
+        );
+      }
+        else {
+          return(
+          <span>{startTime} to {endTime}</span>
+        );
+      }
+    }
+
     render(){
       const event = this.props.location.state.events;
       const eventDateMoment = moment(event.date);
@@ -53,32 +70,45 @@ class CalendarSingle extends Component {
             <div className="col-xs-2">
               <div className="date-info pull-left">
                 <div className="custom-dayOfWeek">
-                  {moment(eventDateMoment).format('ddd')}
+                  {moment(event.date).format('ddd')}
                  </div>
                 <div className="custom-day">
-                  {moment(eventDateMoment).format('D')}
+                  {moment(event.date).format('D')}
                 </div>
                 <div className="custom-month">
-                  {moment(eventDateMoment).format('MMM')}
+                  {moment(event.date).format('MMM')}
                 </div>
                 <div className="custom-year">
-                 {moment(eventDateMoment).format('YYYY')}
+                 {moment(event.date).format('YYYY')}
                 </div>
               </div>
             </div>
 
             <div className="event-info col-xs-7">
             <div>
-              {event.body}
+              { this.renderTime() }
+              <br />
+              <div className="cursor-pointer" onClick={this.open}>
+                <span className="glyphicon glyphicon-globe" aria-hidden="true"></span> {event.location}
+              </div>
+
+              <section>
+              <h4>Price</h4>
+                {event.price}
+              </section>
+
+              <section>
+              <h4>How to Book</h4>
+                {event.how_to_book}
+              </section>
+
+              <hr />
+
+              <section>
+                {event.body}
+              </section>
             </div>
-            <br />
-            <br />
           <div>
-
-
-          <div className="cursor-pointer" onClick={this.open}>
-            <span className="glyphicon glyphicon-globe" aria-hidden="true"></span> {event.location}
-          </div>
 
           <Modal show={this.state.showModal} onHide={this.close}>
             <Modal.Header closeButton>
@@ -101,6 +131,7 @@ class CalendarSingle extends Component {
 
           {audienceItem}
 
+          <div className="clearfix"></div>
           <div className="clearfix"></div>
 
           <Link to='/'>Back to All Events</Link>
