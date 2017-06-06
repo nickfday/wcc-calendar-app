@@ -4,9 +4,7 @@ var Loader = require('react-loader');
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import CalendarList from './CalendarList';
-
-//import { DateField } from 'react-date-picker';
-//import 'react-date-picker/index.css';
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class Calendar extends Component {
   constructor(props){
@@ -21,8 +19,11 @@ class Calendar extends Component {
       selectedAudienceTypes: '',
       selectedEventTypes: '',
       startDate: null,
-      endDate: null
+      endDate: null,
+      isToggleOn: true
     };
+
+    this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
     this.handleTitleTextInput = this.handleTitleTextInput.bind(this);
     this.handleAddressTextInput = this.handleAddressTextInput.bind(this);
     this.handleEventTypeInput = this.handleEventTypeInput.bind(this);
@@ -36,10 +37,16 @@ class Calendar extends Component {
     this.handleSort = this.handleSort.bind(this);
   }
 
+   handleCalendarViewSwitch() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
   handleStartDate(startDate) {
     this.setState({
       startDate: startDate
-    })
+    });
   }
 
   handleEndDate(endDate) {
@@ -167,7 +174,16 @@ class Calendar extends Component {
             <h1>Events</h1>
           </div>
 
-          <p>Browse the events calendar to find out about big council-run events. We also list a wide variety of groups, meet-ups, classes and workshops run by and on behalf of the Westminster community.</p>
+          <div className="row">
+            <div className="col-sm-10">
+              <p>Browse the events calendar to find out about big council-run events. We also list a wide variety of groups, meet-ups, classes and workshops run by and on behalf of the Westminster community.</p>
+            </div>
+            <div className="col-sm-2">
+            <button className="btn btn-primary" onClick={this.handleCalendarViewSwitch}>
+                {this.state.isToggleOn ? 'Switch to Calendar View' : 'Switch to List View'}
+            </button>
+            </div>
+          </div>
 
           <div className="row">
             <div className="col-sm-3">
