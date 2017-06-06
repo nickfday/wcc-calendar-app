@@ -25,9 +25,9 @@ class MySelect extends Component {
         value={this.props.selectedItems}
         options={options}
         onChange={this.logChange.bind(this)}
-        multi={false}
+        multi={this.props.multiSelect}
         placeholder={this.props.placeholder}
-        className="form-group"
+        className={this.props.className}
       />
     );
   }

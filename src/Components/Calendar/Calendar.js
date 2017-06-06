@@ -20,7 +20,7 @@ class Calendar extends Component {
       selectedEventTypes: '',
       startDate: null,
       endDate: null,
-      isToggleOn: true
+      isListViewOn: true
     };
 
     this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
@@ -39,7 +39,7 @@ class Calendar extends Component {
 
    handleCalendarViewSwitch() {
     this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn
+      isListViewOn: !prevState.isListViewOn
     }));
   }
 
@@ -180,7 +180,7 @@ class Calendar extends Component {
             </div>
             <div className="col-sm-2">
             <button className="btn btn-primary" onClick={this.handleCalendarViewSwitch}>
-                {this.state.isToggleOn ? 'Switch to Calendar View' : 'Switch to List View'}
+                {this.state.isListViewOn ? 'Switch to Calendar View' : 'Switch to List View'}
             </button>
             </div>
           </div>

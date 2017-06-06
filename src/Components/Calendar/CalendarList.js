@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import CalendarRow from './CalendarRow';
 import moment from 'moment';
+import BigCalendar from 'react-big-calendar';
+import events from './events';
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 
 class CalendarList extends Component {
@@ -53,7 +59,9 @@ class CalendarList extends Component {
       }
 
       //Show eventItems
-      eventItems.push( <CalendarRow events={eventItem} key={eventItem.uuid} />);
+      eventItems.push(
+        <CalendarRow events={eventItem} key={eventItem.uuid} />
+      );
       return;
     });
     // at loop end
@@ -67,9 +75,17 @@ class CalendarList extends Component {
     );
    }
 
+   //if list view toggle show eventItems else render calendar component
     return(
       <div className="">
-        { eventItems }
+        { this.props.events.isListViewOn ?
+          <div>{ eventItems }</div> :
+            <BigCalendar
+            {...this.props}
+              events={events}
+              defaultDate={new Date(2015, 3, 1)}
+            />
+        }
       </div>
     );
   }

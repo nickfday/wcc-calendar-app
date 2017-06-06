@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './calendar-list.css';
-import { Button, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import BSModal from '../Misc/BSModal'
 

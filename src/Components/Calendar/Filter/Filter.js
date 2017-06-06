@@ -62,6 +62,8 @@ class Filter extends Component {
               selectedItems={this.props.calenderState.selectedEventTypes}
               handleSelectedItem={this.props.handleSelectedEventTypes}
               placeholder='Select Event Type'
+              multiSelect={false}
+              className='form-group event-select'
             />
 
             <label className="sr-only" htmlFor="exampleInputEmail3">Who it's for</label>
@@ -70,6 +72,8 @@ class Filter extends Component {
               selectedItems={this.props.calenderState.selectedAudienceTypes}
               handleSelectedItem={this.props.handleSelectedAudienceTypes}
               placeholder='Select Audience Type'
+              className='form-group'
+              //multiSelect={true}
             />
 
             <button onClick={this.props.handleReset}>Reset</button>
