@@ -13,9 +13,26 @@ class CalendarList extends Component {
   render() {
     let eventArray = this.props.events;
     let eventItems = [];
+    let selectedEvents = [];
+    let selectedAudience = [];
     const noResultsText = 'No results - please adjust filters';
 
-    eventArray.events.forEach((eventItem) => {
+    //Retrieve events value
+    if (eventArray.selectedEventTypes !=='') {
+      eventArray.selectedEventTypes.forEach((element, index) => {
+      selectedEvents.push(element.value);
+      });
+    }
+
+    //Retrieve audience value
+    if (eventArray.selectedAudienceTypes !=='') {
+      eventArray.selectedAudienceTypes.forEach((element, index) => {
+      selectedAudience.push(element.value);
+      });
+    }
+
+    // Filter Listings
+    eventArray.events.forEach((eventItem, index) => {
       //Search filter condition
       if (
         (eventArray.titleText !=='') &&
@@ -30,20 +47,30 @@ class CalendarList extends Component {
        ) {
         return;
       }
+
+      console.log(selectedEvents);
+      console.log(eventItem.audience.split(", "));
       //Event Filter condition
-      if (
-        (eventArray.selectedEventTypes !=='') &&
-        (eventItem.event_type !== eventArray.selectedEventTypes.value)
-       ) {
-        return;
-      }
+        if (eventArray.selectedEventTypes !=='' &&
+           selectedEvents.indexOf(eventItem.event_type) === -1 )
+          {
+            return
+          }
+
       //Audience Filter condition
-      if (
-        (eventArray.selectedAudienceTypes !=='') &&
-        (eventItem.audience !== eventArray.selectedAudienceTypes.value)
-       ) {
-        return;
-      }
+
+        if ((eventArray.selectedAudienceTypes !=='') &&
+           (selectedAudience.indexOf(eventItem.audience) === -1 ))
+          {
+            return
+          }
+
+      // if (
+      //   (eventArray.selectedAudienceTypes !=='') &&
+      //   (eventItem.audience !== eventArray.selectedAudienceTypes.value)
+      //  ) {
+      //   return;
+      // }
 
       //Date Filter condition
       let selectedStartDate = moment(eventArray.startDate);

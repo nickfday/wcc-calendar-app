@@ -62,7 +62,7 @@ class Filter extends Component {
               selectedItems={this.props.calenderState.selectedEventTypes}
               handleSelectedItem={this.props.handleSelectedEventTypes}
               placeholder='Select Event Type'
-              multiSelect={false}
+              multiSelect={true}
               className='form-group event-select'
             />
 
@@ -73,7 +73,7 @@ class Filter extends Component {
               handleSelectedItem={this.props.handleSelectedAudienceTypes}
               placeholder='Select Audience Type'
               className='form-group'
-              //multiSelect={true}
+              multiSelect={true}
             />
 
             <button onClick={this.props.handleReset}>Reset</button>
