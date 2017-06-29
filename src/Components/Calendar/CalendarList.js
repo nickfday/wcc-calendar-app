@@ -10,12 +10,25 @@ BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 
 class CalendarList extends Component {
+  noResults() {
+    alert();
+    // eventItems.push(
+    //   <div className="eventItem"  key={'no results'}>
+    //   <div className="col-sm-12">
+    //     <p>{noResultsText} <a href="" onClick={this.props.handleReset}>Reset</a></p>
+    //   </div>
+    //   </div>
+    // );
+  }
+
   render() {
     let eventArray = this.props.events;
     let eventItems = [];
     let selectedEvents = [];
     let selectedAudience = [];
     const noResultsText = 'No results - please adjust filters';
+    let self = this;
+    var uniqueMatched = [];
 
     //Retrieve events value
     if (eventArray.selectedEventTypes !=='') {
@@ -48,22 +61,47 @@ class CalendarList extends Component {
         return;
       }
 
-      console.log(selectedEvents);
-      console.log(eventItem.audience.split(", "));
-      //Event Filter condition
-        if (eventArray.selectedEventTypes !=='' &&
-           selectedEvents.indexOf(eventItem.event_type) === -1 )
-          {
-            return
-          }
+      // console.log(selectedEvents);
+      // //Event Filter condition
+      //   if (eventArray.selectedEventTypes !=='' &&
+      //      selectedEvents.indexOf(eventItem.event_type) === -1 )
+      //     {
+      //       return
+      //     }
 
       //Audience Filter condition
 
-        if ((eventArray.selectedAudienceTypes !=='') &&
-           (selectedAudience.indexOf(eventItem.audience) === -1 ))
-          {
-            return
-          }
+        console.log(eventItem.audience.split(", "));
+
+        // looping each event
+        // empty match array
+        const matchedTag = [];
+          // loop sorted selected audience
+          console.log(this.props.events.selectedAudienceTypes);
+          Object.keys(this.props.events.selectedAudienceTypes).sort().map((selectedTag) => {
+             // loop all sorted tags
+             eventItem.audience.split(", ").sort().map((tag) => {
+              console.log(tag);
+              console.log(self.props.events.selectedAudienceTypes[selectedTag]);
+              // if selected audience value == tag push onto matched event
+              if (self.props.events.selectedAudienceTypes[selectedTag].value == tag) {
+                console.log('MATCHED');
+                matchedTag.push(eventItem);
+              }
+             })
+
+
+          })
+
+
+          //if selectedTag length == matchedEvent length display record
+
+
+        // if ((eventArray.selectedAudienceTypes !=='') &&
+        //    (selectedAudience.indexOf(eventItem.audience) === -1 ))
+        //   {
+        //     return
+        //   }
 
       // if (
       //   (eventArray.selectedAudienceTypes !=='') &&
@@ -86,11 +124,43 @@ class CalendarList extends Component {
       }
 
       //Show eventItems
-      eventItems.push(
+      console.log(uniqueMatched);
+      console.log(eventItem);
+
+
+
+
+
+
+       console.log(matchedTag.length);
+      console.log(self.props.events.selectedAudienceTypes.length);
+      if (matchedTag.length == self.props.events.selectedAudienceTypes.length) {
+        console.log(eventItem);
+        uniqueMatched.push(eventItem);
+      }
+
+
+
+     uniqueMatched.map(function(element){
+        if (element.title == eventItem.title) {
+          console.log('final match');
+          eventItems.push(
         <CalendarRow events={eventItem} key={eventItem.uuid} />
       );
+        }
+      });
+
+
+
+
+
+
+
       return;
     });
+
+
+
     // at loop end
    if (eventItems.length === 0) {
     eventItems.push(
