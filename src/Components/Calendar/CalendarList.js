@@ -28,10 +28,11 @@ class CalendarList extends Component {
     let selectedAudience = [];
     const noResultsText = 'No results - please adjust filters';
     let self = this;
-    var uniqueMatched = [];
+    var uniqueAudienceMatched = [];
+    var uniqueEventMatched = [];
     let matchedTag = [];
 
-    function filterMultiSelect(selectVal, itemVal, eventItem) {
+    function filterMultiSelect(selectVal, itemVal, eventItem, uniqueArray) {
       matchedTag = [];
       // loop sorted selected audience
       //Object.keys(selectVal).sort().map((selectedTag) => {
@@ -46,8 +47,8 @@ class CalendarList extends Component {
       });
        //Show eventItems
        console.log('HIT');
-      if (matchedTag.length == self.props.events.selectedAudienceTypes.length) {
-        uniqueMatched.push(eventItem);
+      if (matchedTag.length == selectVal.length) {
+        uniqueArray.push(eventItem);
       }
     }
 
@@ -124,18 +125,31 @@ class CalendarList extends Component {
 
       // display results function
       // add unique matched to filterTags then call display if equal
-      //Audience Filter condition
-      filterMultiSelect(self.props.events.selectedAudienceTypes, eventItem.audience, eventItem);
 
-       uniqueMatched.map(function(element){
+
+      //Audience Filter condition
+       //filterMultiSelect(self.props.events.selectedAudienceTypes, eventItem.audience, eventItem, uniqueAudienceMatched);
+
+      //Event Filter Condition
+      filterMultiSelect(self.props.events.selectedEventTypes, eventItem.event_type, eventItem, uniqueEventMatched);
+
+
+
+       // uniqueAudienceMatched.map(function(element){
+       //    console.log('unique');
+       //    if (element.title == eventItem.title) {
+       //      renderItem(eventItem);
+       //      //renderItem(eventItem);
+       //    }
+       //  });
+
+       uniqueEventMatched.map(function(element){
           console.log('unique');
-          console.log(uniqueMatched.length);
           if (element.title == eventItem.title) {
             renderItem(eventItem);
             //renderItem(eventItem);
           }
         });
-
 
        //render Item
     // end event loop
