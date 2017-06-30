@@ -122,11 +122,6 @@ class CalendarList extends Component {
         return;
       }
 
-      //Show eventItems
-      if (matchedTag.length == self.props.events.selectedAudienceTypes.length) {
-        uniqueMatched.push(eventItem);
-      }
-
       // display results function
       // add unique matched to filterTags then call display if equal
       //Audience Filter condition
