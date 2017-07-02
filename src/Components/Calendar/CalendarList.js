@@ -10,16 +10,6 @@ BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 
 class CalendarList extends Component {
-  noResults() {
-    alert();
-    // eventItems.push(
-    //   <div className="eventItem"  key={'no results'}>
-    //   <div className="col-sm-12">
-    //     <p>{noResultsText} <a href="" onClick={this.props.handleReset}>Reset</a></p>
-    //   </div>
-    //   </div>
-    // );
-  }
 
   render() {
     let eventArray = this.props.events;
@@ -32,10 +22,11 @@ class CalendarList extends Component {
     var uniqueEventMatched = [];
     let matchedTag = [];
 
-    function filterMultiSelect(selectVal, itemVal, eventItem, uniqueArray) {
+    function filterMultiSelect(selectVal, itemVal, eventItem, uniqueArray, match) {
       matchedTag = [];
+      var uniqueMatched = [];
+      match = true;
       // loop sorted selected audience
-      //Object.keys(selectVal).sort().map((selectedTag) => {
       Object.keys(selectVal).sort().map((selectedTag) => {
       //loop all sorted tags
         itemVal.split(", ").sort().map((tag) => {
@@ -48,8 +39,13 @@ class CalendarList extends Component {
        //Show eventItems
        console.log('HIT');
       if (matchedTag.length == selectVal.length) {
-         renderItem(eventItem);
+          uniqueMatched.push(eventItem);
       }
+      console.log(uniqueMatched.length);
+       if (uniqueMatched.length==0) {
+        match = false;
+      }
+      return match;
     }
 
 
@@ -75,22 +71,12 @@ class CalendarList extends Component {
 
 
 
-    //Retrieve events value
-    if (eventArray.selectedEventTypes !=='') {
-      eventArray.selectedEventTypes.forEach((element, index) => {
-      selectedEvents.push(element.value);
-      });
-    }
 
-    //Retrieve audience value
-    if (eventArray.selectedAudienceTypes !=='') {
-      eventArray.selectedAudienceTypes.forEach((element, index) => {
-      selectedAudience.push(element.value);
-      });
-    }
 
     // Filter Listings
     eventArray.events.forEach((eventItem, index) => {
+      var audienceMatch = true;
+      var eventMatch = true;
       //Search filter condition
       if (
         (eventArray.titleText !=='') &&
@@ -125,34 +111,18 @@ class CalendarList extends Component {
         return;
       }
 
-      // display results function
-      // add unique matched to filterTags then call display if equal
-
+      //Event Filter Condition
+      eventMatch = filterMultiSelect(self.props.events.selectedEventTypes, eventItem.event_type, eventItem, this.eventMatch);
 
       //Audience Filter condition
-       filterMultiSelect(self.props.events.selectedAudienceTypes, eventItem.audience, eventItem, uniqueAudienceMatched);
+      audienceMatch = filterMultiSelect(self.props.events.selectedAudienceTypes, eventItem.audience, eventItem, uniqueAudienceMatched, this.audienceMatch);
 
-      //Event Filter Condition
-      //filterMultiSelect(self.props.events.selectedEventTypes, eventItem.event_type, eventItem, uniqueEventMatched);
-
-
-
-       // uniqueAudienceMatched.map(function(element){
-       //    console.log('unique');
-       //    if (element.title == eventItem.title) {
-       //      renderItem(eventItem);
-       //      //renderItem(eventItem);
-       //    }
-       //  });
-
-       // uniqueEventMatched.map(function(element){
-       //    console.log('unique');
-       //    if (element.title == eventItem.title) {
-       //      renderItem(eventItem);
-       //    }
-       //  });
-
-       //render Item
+      if (audienceMatch && eventMatch) {
+        renderItem(eventItem);
+      }
+      else {
+        return;
+      }
     // end event loop
     });
 
