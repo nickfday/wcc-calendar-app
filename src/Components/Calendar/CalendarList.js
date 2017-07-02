@@ -48,15 +48,17 @@ class CalendarList extends Component {
        //Show eventItems
        console.log('HIT');
       if (matchedTag.length == selectVal.length) {
-        uniqueArray.push(eventItem);
+         renderItem(eventItem);
       }
     }
+
+
 
     function renderItem(item) {
       console.log("render" + item);
        eventItems.push(
         <CalendarRow events={item} key={item.uuid} />
-      )
+      );
     }
 
     function noResults(eventItems, self) {
@@ -128,10 +130,10 @@ class CalendarList extends Component {
 
 
       //Audience Filter condition
-       //filterMultiSelect(self.props.events.selectedAudienceTypes, eventItem.audience, eventItem, uniqueAudienceMatched);
+       filterMultiSelect(self.props.events.selectedAudienceTypes, eventItem.audience, eventItem, uniqueAudienceMatched);
 
       //Event Filter Condition
-      filterMultiSelect(self.props.events.selectedEventTypes, eventItem.event_type, eventItem, uniqueEventMatched);
+      //filterMultiSelect(self.props.events.selectedEventTypes, eventItem.event_type, eventItem, uniqueEventMatched);
 
 
 
@@ -143,13 +145,12 @@ class CalendarList extends Component {
        //    }
        //  });
 
-       uniqueEventMatched.map(function(element){
-          console.log('unique');
-          if (element.title == eventItem.title) {
-            renderItem(eventItem);
-            //renderItem(eventItem);
-          }
-        });
+       // uniqueEventMatched.map(function(element){
+       //    console.log('unique');
+       //    if (element.title == eventItem.title) {
+       //      renderItem(eventItem);
+       //    }
+       //  });
 
        //render Item
     // end event loop
