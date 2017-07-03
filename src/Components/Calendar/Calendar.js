@@ -125,16 +125,10 @@ class Calendar extends Component {
     axios.get('http://alphawcc.dev/api/calendar/views/calendar_json.json')
     .then(function(response) {
       self.setState({events: response.data, loaded: true}, function(){
-        console.log(response.data);
         response.data.map(function(element, index){
-          //console.log(element.audience);
           element.audience.split(', ').map(function(element, index) {
-            console.log(element);
           })
         });
-        // response.data.audience.split(',').map(function(element, index) {
-        //   console.log(element);
-        // })
       });
     })
     .catch(function(error) {
@@ -158,7 +152,6 @@ class Calendar extends Component {
     const self = this;
     axios.get('http://alphawcc.dev/api/calendar/taxonomy_term.json?parameters[vid]=12')
     .then(function(response) {
-      console.log(response.data);
       self.setState({audienceTypes: response.data, loaded: true}, function(){
       });
     })
@@ -171,24 +164,7 @@ class Calendar extends Component {
     this.getEvents();
     this.getEventTypes();
     this.getAudienceTypes();
-    this.filterAudienceTypes();
-    this.test();
-  }
-
-  test() {
-    console.log('test');
-  }
-
-  filterAudienceTypes() {
-    const self = this;
-    console.log(self.state.audienceTypes);
-    // self.state.audienceTypes.split(',').map(function(element, index) {
-    //   console.log(element);
-    //   // self.setSate({
-    //   //   audienceTypes: element
-    //   // });
-    // });
-  }
+ }
 
 
   render() {

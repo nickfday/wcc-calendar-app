@@ -3,23 +3,17 @@ import CalendarRow from './CalendarRow';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 import events from './events';
-
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
-
 class CalendarList extends Component {
-
   render() {
     let eventArray = this.props.events;
     let eventItems = [];
-    let selectedEvents = [];
-    let selectedAudience = [];
     const noResultsText = 'No results - please adjust filters';
     let self = this;
-    var uniqueAudienceMatched = [];
-    var uniqueEventMatched = [];
+    let uniqueAudienceMatched = [];
     let matchedTag = [];
 
     function filterMultiSelect(selectVal, itemVal, eventItem, uniqueArray, match) {
@@ -29,85 +23,76 @@ class CalendarList extends Component {
       // loop sorted selected audience
       Object.keys(selectVal).sort().map((selectedTag) => {
       //loop all sorted tags
-        itemVal.split(", ").sort().map((tag) => {
+        itemVal.split(', ').sort().map((tag) => {
         //if selected audience value == tag push onto matched event
-          if (selectVal[selectedTag].value == tag) {
+          if (selectVal[selectedTag].value === tag) {
             matchedTag.push(itemVal);
+            return false;
+          }
+          else {
+            return false;
           }
         });
+        return false;
       });
        //Show eventItems
-       console.log('HIT');
-      if (matchedTag.length == selectVal.length) {
-          uniqueMatched.push(eventItem);
+      if (matchedTag.length === selectVal.length) {
+        uniqueMatched.push(eventItem);
       }
-      console.log(uniqueMatched.length);
-       if (uniqueMatched.length==0) {
+
+      if (uniqueMatched.length === 0) {
         match = false;
       }
       return match;
     }
 
-
-
     function renderItem(item) {
-      console.log("render" + item);
-       eventItems.push(
+      eventItems.push(
         <CalendarRow events={item} key={item.uuid} />
       );
     }
 
     function noResults(eventItems, self) {
-        if (eventItems.length === 0) {
-      eventItems.push(
+      if (eventItems.length === 0) {
+        eventItems.push(
         <div className="eventItem"  key={'no results'}>
         <div className="col-sm-12">
           <p>{noResultsText} <a href="" onClick={self.props.handleReset}>Reset</a></p>
         </div>
         </div>
       );
-     }
+      }
     }
 
-
-
-
+    function searchFilter(searchVal, itemVal) {
+      if (searchVal !=='' && itemVal.toLowerCase().indexOf(searchVal.toLowerCase()) === -1) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
 
     // Filter Listings
-    eventArray.events.forEach((eventItem, index) => {
+     eventArray.events.forEach((eventItem, index) => {
       var audienceMatch = true;
       var eventMatch = true;
-      //Search filter condition
-      if (
-        (eventArray.titleText !=='') &&
-        (eventItem.title.toLowerCase().indexOf(eventArray.titleText.toLowerCase()) === -1)
-       ) {
-        return;
-      }
-      //Address Filter condition
-      if (
-        (eventArray.addressText !=='') &&
-        (eventItem.location.toLowerCase().indexOf(eventArray.addressText.toLowerCase()) === -1)
-       ) {
-        return;
-      }
-
-
-
-      //filterMultiSelect(self.props.events.selectedEventTypes, eventItem.event_type, eventItem);
-
-
 
       //Date Filter condition
       let selectedStartDate = moment(eventArray.startDate);
       let selectedEndDate = moment(eventArray.endDate);
       let rowDate = moment(eventItem.date);
 
-      if (selectedStartDate > rowDate) {
+      //Search filter condition
+      if (!searchFilter(eventArray.titleText, eventItem.title)) {
         return;
       }
 
-      if (selectedEndDate < rowDate) {
+      if (!searchFilter(eventArray.addressText, eventItem.location)) {
+        return;
+      }
+
+      if (selectedStartDate > rowDate || selectedEndDate < rowDate) {
         return;
       }
 

@@ -5,7 +5,7 @@ import 'react-select/dist/react-select.css';
 class MySelect extends Component {
   logChange(val) {
     this.props.handleSelectedItem(val);
-    if (val == null || val.length == 0) {
+    if (val === null || val.length === 0) {
       this.props.handleSelectedItem('');
     }
   }
