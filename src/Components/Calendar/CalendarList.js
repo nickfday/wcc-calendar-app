@@ -15,6 +15,19 @@ class CalendarList extends Component {
     let self = this;
     let uniqueAudienceMatched = [];
     let matchedTag = [];
+    let eventCalendarArray = [];
+
+    addDateFormat();
+
+    // Add date object for calendar format
+    function addDateFormat() {
+      eventArray.events.map(function(e){
+        console.log(e);
+        e.start = new Date (e.date.slice(0,10).split('-').join());
+        e.end = new Date (e.date.slice(0,10).split('-').join());
+        eventCalendarArray.push(e);
+      });
+    }
 
     function filterMultiSelect(selectVal, itemVal, eventItem, uniqueArray, match) {
       matchedTag = [];
@@ -78,6 +91,8 @@ class CalendarList extends Component {
       var audienceMatch = true;
       var eventMatch = true;
 
+      console.log(eventItem.date.slice(0,10).split('-'));
+
       //Date Filter condition
       let selectedStartDate = moment(eventArray.startDate);
       let selectedEndDate = moment(eventArray.endDate);
@@ -121,8 +136,9 @@ class CalendarList extends Component {
           <div>{ eventItems }</div> :
             <BigCalendar
             {...this.props}
-              events={events}
-              defaultDate={new Date(2015, 3, 1)}
+              //events={events}
+              events={eventCalendarArray}
+              //defaultDate={new Date(2015, 3, 1)}
             />
         }
       </div>
