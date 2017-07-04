@@ -25,8 +25,9 @@ class CalendarList extends Component {
         console.log(e);
         e.start = new Date (e.date.slice(0,10).split('-').join());
         e.end = new Date (e.date.slice(0,10).split('-').join());
-        eventCalendarArray.push(e);
+        //eventArray.events.push(e);
       });
+      console.log(eventArray.events);
     }
 
     function filterMultiSelect(selectVal, itemVal, eventItem, uniqueArray, match) {
@@ -63,6 +64,11 @@ class CalendarList extends Component {
       eventItems.push(
         <CalendarRow events={item} key={item.uuid} />
       );
+      eventCalendarArray.push(
+        item
+      )
+      console.log(eventItems);
+      console.log(eventCalendarArray);
     }
 
     function noResults(eventItems, self) {
