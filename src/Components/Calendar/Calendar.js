@@ -213,7 +213,7 @@ class Calendar extends Component {
             </div>
 
             <div className="col-sm-9">
-              <CalendarList events={this.state} handleReset={this.handleReset} />
+              <CalendarList events={this.state} handleReset={this.handleReset} history={this.props.history} location={this.props.location} props={this.props} />
             </div>
           </div>
         </Loader>

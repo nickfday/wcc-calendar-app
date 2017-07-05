@@ -9,8 +9,8 @@ class CalendarSingle extends Component {
 
   // Render endTime only if differs to startTime
   renderTime() {
-    let startTime = moment(this.props.location.state.events.date).format('h:ma');
-    let endTime = moment(this.props.location.state.events.end_date).format('h:ma');
+    let startTime = moment(event.date).format('h:ma');
+    let endTime = moment(event.end_date).format('h:ma');
       if (startTime === endTime) {
         return(
           <span>{startTime}</span>
@@ -24,7 +24,26 @@ class CalendarSingle extends Component {
     }
 
     render(){
-      const event = this.props.location.state.events;
+
+      var event;
+      console.log(this);
+
+      try{
+      if(typeof this.props.location.state.events !== 'undefined') {
+          event = this.props.location.state.events;
+      }
+    } catch(e){
+      //console.log('responde[0].title is undefined');
+    }
+
+      try{
+      if(typeof this.props.history.event !== 'undefined') {
+         event = this.props.history.event;
+      }
+    } catch(e){
+      console.log('responde[0].title is undefined');
+    }
+
       const eventDateMoment = moment(event.date);
       let audienceItem = event.audience.split(',').map(function(element, index){
       return(

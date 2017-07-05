@@ -3,6 +3,7 @@ import CalendarRow from './CalendarRow';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 import events from './events';
+import {  BrowserRouter as Router, Route, Switch, Location, History } from 'react-router-dom';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -70,7 +71,6 @@ class CalendarList extends Component {
       console.log(eventItems);
       console.log(eventCalendarArray);
     }
-
     function noResults(eventItems, self) {
       if (eventItems.length === 0) {
         eventItems.push(
@@ -90,6 +90,15 @@ class CalendarList extends Component {
       else {
         return true;
       }
+    }
+
+    function handleEvent(title, event, self, history) {
+      console.log(title);
+      console.log(event);
+      history.event=event;
+      console.log(self);
+      history.push(`/event/${event.uuid}`);
+      //self.props.history.push(`/events/${event.uuid}`)
     }
 
     // Filter Listings
@@ -144,6 +153,7 @@ class CalendarList extends Component {
             {...this.props}
               //events={events}
               events={eventCalendarArray}
+              onSelectEvent={event => handleEvent(event.title, event, self, self.props.history)}
               //defaultDate={new Date(2015, 3, 1)}
             />
         }
