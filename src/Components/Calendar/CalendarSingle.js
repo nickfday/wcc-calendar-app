@@ -92,7 +92,7 @@ class CalendarSingle extends Component {
               <br />
               <BSModal
                  buttonLabel={event.location}
-                 map="https://maps.google.com/maps?hl=en&amp;q=' + {event.location} + '&amp;z=14&amp;t=m&amp;output=embed"
+                 map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q='+event.location}
                  />
 
               <section>

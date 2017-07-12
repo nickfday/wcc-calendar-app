@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 import './calendar-list.css';
 import moment from 'moment';
 import BSModal from '../Misc/BSModal'
-
-
+import CSSTransitionGroup from 'react-addons-css-transition-group'
 
 class CalendarRow extends Component {
-
   render() {
     const event = this.props.events;
     const eventURL = event.uuid.replace(/\s+/g, '-').toLowerCase();
@@ -31,7 +29,18 @@ class CalendarRow extends Component {
     });
 
     return (
-      <div className="event-row clearfix">
+      <CSSTransitionGroup
+        component="div"
+        transitionElement="div"
+        transitionName="row"
+        transitionAppear={true}
+        //transitionAppearTimeout={500}
+        //transitionEnter={false}
+        //transitionLeave={false}
+        transitionLeaveTimeout={500}
+        transitionEnterTimeout={500}
+        className="event-row clearfix">
+
         <div className="col-xs-2">
           <div className="date-info pull-left">
             <div className="custom-dayOfWeek">
@@ -72,8 +81,8 @@ class CalendarRow extends Component {
          <div>
 
          <BSModal
-         buttonLabel={event.location}
-         map="https://maps.google.com/maps?hl=en&amp;q=' + {event.location} + '&amp;z=14&amp;t=m&amp;output=embed"
+           buttonLabel={event.location}
+           map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q='+event.location}
          />
          <br/>
          <br/>
@@ -98,7 +107,7 @@ class CalendarRow extends Component {
        </div>
 
 
-      </div>
+     </CSSTransitionGroup>
 
     );
   }
