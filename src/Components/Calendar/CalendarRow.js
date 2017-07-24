@@ -42,12 +42,9 @@ class CalendarRow extends Component {
     return (
       <CSSTransitionGroup
         component="div"
-        transitionElement="div"
         transitionName="row"
         transitionAppear={true}
         transitionAppearTimeout={500}
-        //transitionEnter={false}
-        //transitionLeave={false}
         transitionLeaveTimeout={500}
         transitionEnterTimeout={500}
         className="event-row clearfix">
