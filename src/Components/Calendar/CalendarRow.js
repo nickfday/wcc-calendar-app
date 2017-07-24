@@ -45,7 +45,7 @@ class CalendarRow extends Component {
         transitionElement="div"
         transitionName="row"
         transitionAppear={true}
-        //transitionAppearTimeout={500}
+        transitionAppearTimeout={500}
         //transitionEnter={false}
         //transitionLeave={false}
         transitionLeaveTimeout={500}
