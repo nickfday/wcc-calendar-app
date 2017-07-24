@@ -23,7 +23,7 @@ class CalendarList extends Component {
       eventArray.events.map(function(e){
         e.start = new Date (e.date.slice(0,10).split('-').join());
         e.end = new Date (e.date.slice(0,10).split('-').join());
-        return;
+        return null;
       });
     }
 

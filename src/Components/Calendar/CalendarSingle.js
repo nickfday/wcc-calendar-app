@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import './calendar-list.css';
 import moment from 'moment';
 import BSModal from '../Misc/BSModal'
@@ -84,7 +83,6 @@ class CalendarSingle extends Component {
 
 
 
-      const eventDateMoment = moment(event.date);
       let audienceItem = event.audience.split(',').map(function(element, index){
       return(
         <div className="audience-item"  key={index}>

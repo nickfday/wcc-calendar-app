@@ -150,9 +150,9 @@ class Calendar extends Component {
       i.splitDates.push(i.date_repeat.split(', '));
       i.splitDates[0].map(function(y){
         i.sortedDates.push(y.split(" to "));
-        return;
+        return null;
       });
-      return;
+      return null;
       //i.date = i.sortedDates;
     });
 
