@@ -4,8 +4,36 @@ import PropTypes from 'prop-types';
 import './calendar-list.css';
 import moment from 'moment';
 import BSModal from '../Misc/BSModal'
+import axios from 'axios';
+
 
 class CalendarSingle extends Component {
+
+
+  componentWillMount() {
+    //if (typeof this.props.location.state === 'undefined') {
+      // get uuid
+      let pathUUID = this.props.location.pathname;
+      if (pathUUID.indexOf("/event/" !== -1)) {
+        var UUID =pathUUID.slice(7);
+        this.fetchSingleEvent(UUID);
+      }
+      //run axios
+
+  }
+
+  fetchSingleEvent(UUID) {
+    //alert(UUID);
+    const self = this;
+    axios.get('http://alphawcc.dev/api/calendar/views/calendar_json.json?uuid='+UUID)
+   //http://alphawcc.dev/api/calendar/views/calendar_json.json?parameters[uuid]=97014f68-b7d3-4d9f-89c4-869e58d9c8ac
+    .then(function(response){
+      self.setState({
+        events: response.data,
+        loaded: true
+      })
+    })
+  }
 
   // Render endTime only if differs to startTime
   renderTime() {
@@ -26,14 +54,24 @@ class CalendarSingle extends Component {
     render(){
 
       var event;
-      console.log(this);
+
+      try{
+      if (typeof this.state.events !== 'undefined') {
+        event = this.state.events[0];
+      }
+    }
+    catch (e) {
+        return (<div>Loading</div>)
+      }
+
+
+
 
       try{
       if(typeof this.props.location.state.events !== 'undefined') {
           event = this.props.location.state.events;
       }
     } catch(e){
-      //console.log('responde[0].title is undefined');
     }
 
       try{
@@ -41,8 +79,10 @@ class CalendarSingle extends Component {
          event = this.props.history.event;
       }
     } catch(e){
-      console.log('responde[0].title is undefined');
     }
+
+
+
 
       const eventDateMoment = moment(event.date);
       let audienceItem = event.audience.split(',').map(function(element, index){
@@ -88,7 +128,7 @@ class CalendarSingle extends Component {
 
             <div className="event-info col-xs-7">
             <div>
-              { this.renderTime() }
+              {/*{ this.renderTime() } */}
               <br />
               <BSModal
                  buttonLabel={event.location}

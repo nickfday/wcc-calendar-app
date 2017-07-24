@@ -4,7 +4,6 @@ var Loader = require('react-loader');
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import CalendarList from './CalendarList';
-import { CSSTransitionGroup } from 'react-transition-group'
 
 class Calendar extends Component {
   constructor(props){
@@ -20,7 +19,8 @@ class Calendar extends Component {
       selectedEventTypes: '',
       startDate: null,
       endDate: null,
-      isListViewOn: true
+      isListViewOn: true,
+      visibleEvents: []
     };
 
     this.handleCalendarViewSwitch = this.handleCalendarViewSwitch.bind(this);
@@ -124,15 +124,41 @@ class Calendar extends Component {
     const self = this;
     axios.get('http://alphawcc.dev/api/calendar/views/calendar_json.json')
     .then(function(response) {
-      self.setState({events: response.data, loaded: true}, function(){
-        response.data.map(function(element, index){
-          element.audience.split(', ').map(function(element, index) {
-          })
-        });
+      self.setState({
+        events: response.data,
+        loaded: true
       });
     })
     .catch(function(error) {
       console.log(error);
+    })
+    .then(function(response){
+      self.handleEventDate(self);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+  }
+
+  handleEventDate(self) {
+
+    //const self = this;
+    var updatedevents = self.state.events.slice();
+    updatedevents.map(function(i){
+      i.splitDates = [];
+      i.sortedDates = [];
+      i.splitDates.push(i.date_repeat.split(', '));
+      i.splitDates[0].map(function(y){
+        i.sortedDates.push(y.split(" to "));
+        return;
+      });
+      return;
+      //i.date = i.sortedDates;
+    });
+
+    self.setState({
+      events: updatedevents
+      //events: null
     });
   }
 
@@ -160,14 +186,20 @@ class Calendar extends Component {
     });
   }
 
-  componentDidMount(){
+
+
+  componentWillMount(){
+
     this.getEvents();
+    //alert('calendar');
     this.getEventTypes();
     this.getAudienceTypes();
+    //this.handleEventDate();
  }
 
 
   render() {
+
     return(
       <div className="content exercise-list container">
         <div className="sp-breadcrumbs"></div>
@@ -177,11 +209,11 @@ class Calendar extends Component {
             <h1>Events</h1>
           </div>
 
-          <div className="row">
-            <div className="col-sm-10">
+          <div className="row margin-bottom-20">
+            <div className="col-sm-9">
               <p>Browse the events calendar to find out about big council-run events. We also list a wide variety of groups, meet-ups, classes and workshops run by and on behalf of the Westminster community.</p>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-3 text-right">
             <button className="btn btn-primary" onClick={this.handleCalendarViewSwitch}>
                 {this.state.isListViewOn ? 'Switch to Calendar View' : 'Switch to List View'}
             </button>
@@ -213,7 +245,7 @@ class Calendar extends Component {
             </div>
 
             <div className="col-sm-9">
-              <CalendarList events={this.state} handleReset={this.handleReset} history={this.props.history} location={this.props.location} props={this.props} />
+                <CalendarList events={this.state} handleReset={this.handleReset} history={this.props.history} location={this.props.location} props={this.props} />
             </div>
           </div>
         </Loader>

@@ -7,10 +7,21 @@ import BSModal from '../Misc/BSModal'
 import CSSTransitionGroup from 'react-addons-css-transition-group'
 
 class CalendarRow extends Component {
+
+    componentWillMount() {
+      //alert('mount');
+    }
+
+
+
   render() {
     const event = this.props.events;
+
     const eventURL = event.uuid.replace(/\s+/g, '-').toLowerCase();
     const eventDateMoment = moment(event.date);
+
+   // console.log(event.sortedDates);
+
 
     let audienceItem = event.audience.split(',').map(function(element, index){
       return(
@@ -42,7 +53,7 @@ class CalendarRow extends Component {
         className="event-row clearfix">
 
         <div className="col-xs-2">
-          <div className="date-info pull-left">
+          <div className="date-info">
             <div className="custom-dayOfWeek">
               {moment(eventDateMoment).format('ddd')}
             </div>
@@ -68,6 +79,13 @@ class CalendarRow extends Component {
            </Link>
          </h3>
          <br />
+
+          newDate:
+          {event.sortedDates &&
+            event.sortedDates[0][0]
+          }
+
+
          <div>
            {event.body}...
            <Link to={{

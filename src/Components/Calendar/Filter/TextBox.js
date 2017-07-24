@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class TextBox extends Component {
-  constructor(props) {
-    super(props);
-    this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(this);
-  }
 
   handleFilterTextInputChange(e) {
     this.props.onFilterTextInput(e.target.value);
@@ -18,7 +14,7 @@ class TextBox extends Component {
            className="form-control"
            placeholder={this.props.placeholder}
            value={this.props.filterText}
-           onChange={this.handleFilterTextInputChange}
+           onChange={this.handleFilterTextInputChange.bind(this)}
          />
        </div>
     );

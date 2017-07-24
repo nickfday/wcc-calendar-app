@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import CalendarRow from './CalendarRow';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
-import events from './events';
-import {  BrowserRouter as Router, Route, Switch, Location, History } from 'react-router-dom';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -23,12 +21,10 @@ class CalendarList extends Component {
     // Add date object for calendar format
     function addDateFormat() {
       eventArray.events.map(function(e){
-        console.log(e);
         e.start = new Date (e.date.slice(0,10).split('-').join());
         e.end = new Date (e.date.slice(0,10).split('-').join());
-        //eventArray.events.push(e);
+        return;
       });
-      console.log(eventArray.events);
     }
 
     function filterMultiSelect(selectVal, itemVal, eventItem, uniqueArray, match) {
@@ -62,14 +58,15 @@ class CalendarList extends Component {
     }
 
     function renderItem(item) {
+      self.props.events.visibleEvents.concat(item);
+
       eventItems.push(
         <CalendarRow events={item} key={item.uuid} />
       );
       eventCalendarArray.push(
         item
       )
-      console.log(eventItems);
-      console.log(eventCalendarArray);
+
     }
     function noResults(eventItems, self) {
       if (eventItems.length === 0) {
@@ -93,12 +90,8 @@ class CalendarList extends Component {
     }
 
     function handleEvent(title, event, self, history) {
-      console.log(title);
-      console.log(event);
       history.event=event;
-      console.log(self);
       history.push(`/event/${event.uuid}`);
-      //self.props.history.push(`/events/${event.uuid}`)
     }
 
     // Filter Listings
@@ -106,7 +99,6 @@ class CalendarList extends Component {
       var audienceMatch = true;
       var eventMatch = true;
 
-      console.log(eventItem.date.slice(0,10).split('-'));
 
       //Date Filter condition
       let selectedStartDate = moment(eventArray.startDate);

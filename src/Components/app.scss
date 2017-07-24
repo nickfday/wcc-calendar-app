@@ -1,3 +1,27 @@
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.row-appear,
+.row-enter {
+  opacity: 0.01;
+}
+
+.row-appear.row-appear-active,
+.row-enter.row-enter-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.row-leave {
+  opacity: 1;
+}
+
+.row-leave.row-leave-active {
+  opacity: 0.01;
+  //transition: opacity 2000ms ease-in;
+}
+
 .NavigationItem {
 	color: #fff;
 }
