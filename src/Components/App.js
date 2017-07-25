@@ -13,14 +13,20 @@ const NoMatch = ({ location }) => (
 );
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'nick'
+    }
+  }
   render() {
 		return(
 			<Router>
 	  	<div>
 	  		{<Layout />}
 	  		<Switch>
-			    <Route exact path="/" component={Calendar}/>
-			    <Route exact path="/event/:id" component={CalendarSingle} />
+			    <Route exact path="/" component={Calendar} name={this.state.name} />
+			    <Route exact path="/event/:id" component={CalendarSingle} name={this.state.name}/>
 			    <Route component={NoMatch}/>
 		    </Switch>
 		    < Footer />

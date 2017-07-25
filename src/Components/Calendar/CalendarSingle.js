@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './calendar-list.css';
+import {splitMap} from '../Misc/Helper';
 import moment from 'moment';
 import BSModal from '../Misc/BSModal'
 import axios from 'axios';
@@ -8,17 +9,12 @@ import axios from 'axios';
 
 class CalendarSingle extends Component {
 
-
   componentWillMount() {
-    //if (typeof this.props.location.state === 'undefined') {
-      // get uuid
-      let pathUUID = this.props.location.pathname;
-      if (pathUUID.indexOf("/event/" !== -1)) {
-        var UUID =pathUUID.slice(7);
-        this.fetchSingleEvent(UUID);
-      }
-      //run axios
-
+    let pathUUID = this.props.location.pathname;
+    if (pathUUID.indexOf("/event/" !== -1)) {
+      var UUID =pathUUID.slice(7);
+      this.fetchSingleEvent(UUID);
+    }
   }
 
   fetchSingleEvent(UUID) {
@@ -80,25 +76,6 @@ class CalendarSingle extends Component {
     } catch(e){
     }
 
-
-
-
-      let audienceItem = event.audience.split(',').map(function(element, index){
-      return(
-        <div className="audience-item"  key={index}>
-          {element}
-        </div>
-      );
-    });
-
-    let eventItem = event.event_type.split(',').map(function(element, index){
-      return(
-        <div className="event-item" key={index}>
-          {element}
-        </div>
-      );
-    });
-
       return (
         <div className="content exercise-list container">
         <div className="sp-breadcrumbs"></div>
@@ -155,11 +132,11 @@ class CalendarSingle extends Component {
 
          </div>
           <br />
-         {eventItem}
+          {splitMap(event.event_type, ', ', 'event-item')}
           <br />
           <div className="clearfix"></div>
 
-          {audienceItem}
+           {splitMap(event.audience, ', ', 'audience-item')}
 
           <div className="clearfix"></div>
           <div className="clearfix"></div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './calendar-list.css';
 import moment from 'moment';
+import {splitMap} from '../Misc/Helper';
 import BSModal from '../Misc/BSModal'
 import CSSTransitionGroup from 'react-addons-css-transition-group'
 
@@ -21,23 +22,6 @@ class CalendarRow extends Component {
     const eventDateMoment = moment(event.date);
 
    // console.log(event.sortedDates);
-
-
-    let audienceItem = event.audience.split(',').map(function(element, index){
-      return(
-        <div className="audience-item"  key={index}>
-          {element}
-        </div>
-      );
-    });
-
-    let eventItem = event.event_type.split(',').map(function(element, index){
-      return(
-        <div className="event-item" key={index}>
-          {element}
-        </div>
-      );
-    });
 
     return (
       <CSSTransitionGroup
@@ -106,11 +90,12 @@ class CalendarRow extends Component {
 
          </div>
           <br />
-         {eventItem}
+         {splitMap(event.event_type, ', ', 'event-item')}
           <br />
           <div className="clearfix"></div>
 
-          {audienceItem}
+
+          {splitMap(event.audience, ', ', 'audience-item')}
 
 
       </div>
