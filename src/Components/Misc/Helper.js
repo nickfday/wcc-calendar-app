@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export function splitMap(list, separator, className) {
-  var list = list.split(separator).map((i, key) => {
+export function splitMap(string, separator, className) {
+  var list = string.split(separator).map((i, key) => { //warning  'list' is already defined  no-redeclare
     return (
       <div className={className} key={key}>{i}</div>
     )
