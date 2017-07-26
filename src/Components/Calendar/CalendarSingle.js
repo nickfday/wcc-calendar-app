@@ -4,6 +4,7 @@ import './calendar-list.css';
 import {splitMap} from '../Misc/Helper';
 import moment from 'moment';
 import BSModal from '../Misc/BSModal'
+import CSSTransitionGroup from 'react-addons-css-transition-group'
 import axios from 'axios';
 
 
@@ -56,7 +57,7 @@ class CalendarSingle extends Component {
       }
     }
     catch (e) {
-        return (<div>Loading</div>)
+        return (<div></div>)
       }
 
 
@@ -77,7 +78,16 @@ class CalendarSingle extends Component {
     }
 
       return (
-        <div className="content exercise-list container">
+        <CSSTransitionGroup
+        component="div"
+        transitionName="row"
+        transitionAppear={true}
+        transitionAppearTimeout={500}
+        transitionLeaveTimeout={500}
+        transitionEnterTimeout={500}
+        className="content exercise-list container">
+
+        {/*<div className="content exercise-list container"> */}
         <div className="sp-breadcrumbs"></div>
          <div className="sp-head row">
             <Link to="/" className="go-up icon-arrow-left"></Link>
@@ -154,7 +164,7 @@ class CalendarSingle extends Component {
 
 
       </div>
-      </div>
+      </CSSTransitionGroup>
         );
     }
 }
