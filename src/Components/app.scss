@@ -11,6 +11,13 @@
 .row-enter.row-enter-active {
   opacity: 1;
   transition: opacity .5s ease-in;
+
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
 }
 
 .row-leave {
@@ -20,6 +27,11 @@
 .row-leave.row-leave-active {
   opacity: 0.01;
   //transition: opacity 2000ms ease-in;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .NavigationItem {
