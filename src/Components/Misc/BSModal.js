@@ -35,7 +35,7 @@ render() {
 
           <Modal.Body>
             {this.props.map &&
-            <iframe width="100%" height="400" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
+            <iframe width="100%"height="400" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" title={this.propsbuttonLabel}
             src={this.props.map}></iframe>
             }
           </Modal.Body>
