@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Filter from './Filter/Filter';
-var Loader = require('react-loader');
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import CalendarList from './CalendarList';
+var Loader = require('react-loader');
+
 
 class Calendar extends Component {
   constructor(props){

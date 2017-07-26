@@ -31,28 +31,28 @@ class CalendarSingle extends Component {
   }
 
   // Render endTime only if differs to startTime
-  renderTime() {
-    let startTime = moment(event.date).format('h:ma');
-    let endTime = moment(event.end_date).format('h:ma');
-      if (startTime === endTime) {
-        return(
-          <span>{startTime}</span>
-        );
-      }
-        else {
-          return(
-          <span>{startTime} to {endTime}</span>
-        );
-      }
-    }
+  // renderTime() {
+  //   let startTime = moment(eventItem.date).format('h:ma');
+  //   let endTime = moment(eventItem.end_date).format('h:ma');
+  //     if (startTime === endTime) {
+  //       return(
+  //         <span>{startTime}</span>
+  //       );
+  //     }
+  //       else {
+  //         return(
+  //         <span>{startTime} to {endTime}</span>
+  //       );
+  //     }
+  //   }
 
     render(){
 
-      var event;
+      var eventItem;
 
       try{
       if (typeof this.state.events !== 'undefined') {
-        event = this.state.events[0];
+        eventItem = this.state.events[0];
       }
     }
     catch (e) {
@@ -64,14 +64,14 @@ class CalendarSingle extends Component {
 
       try{
       if(typeof this.props.location.state.events !== 'undefined') {
-          event = this.props.location.state.events;
+          eventItem = this.props.location.state.events;
       }
     } catch(e){
     }
 
       try{
       if(typeof this.props.history.event !== 'undefined') {
-         event = this.props.history.event;
+         eventItem = this.props.history.event;
       }
     } catch(e){
     }
@@ -81,22 +81,22 @@ class CalendarSingle extends Component {
         <div className="sp-breadcrumbs"></div>
          <div className="sp-head row">
             <Link to="/" className="go-up icon-arrow-left"></Link>
-            <h1>{event.title}</h1>
+            <h1>{eventItem.title}</h1>
           </div>
           <div className="event-row clearfix">
             <div className="col-xs-2">
               <div className="date-info pull-left">
                 <div className="custom-dayOfWeek">
-                  {moment(event.date).format('ddd')}
+                  {moment(eventItem.date).format('ddd')}
                  </div>
                 <div className="custom-day">
-                  {moment(event.date).format('D')}
+                  {moment(eventItem.date).format('D')}
                 </div>
                 <div className="custom-month">
-                  {moment(event.date).format('MMM')}
+                  {moment(eventItem.date).format('MMM')}
                 </div>
                 <div className="custom-year">
-                 {moment(event.date).format('YYYY')}
+                 {moment(eventItem.date).format('YYYY')}
                 </div>
               </div>
             </div>
@@ -106,24 +106,24 @@ class CalendarSingle extends Component {
               {/*{ this.renderTime() } */}
               <br />
               <BSModal
-                 buttonLabel={event.location}
-                 map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q='+event.location}
+                 buttonLabel={eventItem.location}
+                 map={'https://www.google.com/maps/embed/v1/place?key=AIzaSyD8cbhTTREwAxNI3IxRLwMGfE1xb_eOINc&q='+eventItem.location}
                  />
 
               <section>
               <h4>Price</h4>
-                {event.price}
+                {eventItem.price}
               </section>
 
               <section>
               <h4>How to Book</h4>
-                {event.how_to_book}
+                {eventItem.how_to_book}
               </section>
 
               <hr />
 
               <section>
-                {event.body}
+                {eventItem.body}
               </section>
             </div>
           <div>
@@ -132,11 +132,11 @@ class CalendarSingle extends Component {
 
          </div>
           <br />
-          {splitMap(event.event_type, ', ', 'event-item')}
+          {splitMap(eventItem.event_type, ', ', 'event-item')}
           <br />
           <div className="clearfix"></div>
 
-           {splitMap(event.audience, ', ', 'audience-item')}
+           {splitMap(eventItem.audience, ', ', 'audience-item')}
 
           <div className="clearfix"></div>
           <div className="clearfix"></div>
@@ -148,7 +148,7 @@ class CalendarSingle extends Component {
 
        <div className="col-xs-3">
          <div>
-           <img src={event.featured_image} alt={event.featured_image_alt_text} />
+           <img src={eventItem.featured_image} alt={eventItem.featured_image_alt_text} />
          </div>
        </div>
 
