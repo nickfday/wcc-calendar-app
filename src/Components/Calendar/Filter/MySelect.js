@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+import React, { Component } from "react";
+import Select from "react-select";
+import "react-select/dist/react-select.css";
 
 class MySelect extends Component {
   logChange(val) {
     this.props.handleSelectedItem(val);
-    if (val == null) {
-      this.props.handleSelectedItem('');
+    if (val === null || val.length === 0) {
+      this.props.handleSelectedItem("");
     }
   }
 
   render() {
     let options = [];
-    this.props.data.map((element) => {
+    this.props.data.map(element => {
       return options.push({
-        value: element.name,
-        label: element.name
+        value: element,
+        label: element
       });
     });
 
@@ -25,9 +25,9 @@ class MySelect extends Component {
         value={this.props.selectedItems}
         options={options}
         onChange={this.logChange.bind(this)}
-        multi={false}
+        multi={this.props.multiSelect}
         placeholder={this.props.placeholder}
-        className="form-group"
+        className={this.props.className}
       />
     );
   }

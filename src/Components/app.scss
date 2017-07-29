@@ -1,14 +1,45 @@
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+// .sk-spinner {
+//   display: none;
+// }
+
+.row-appear,
+.row-enter {
+  opacity: 0.01;
+}
+
+.row-appear.row-appear-active,
+.row-enter.row-enter-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+  .sk-spinner {
+    display: block;
+  }
+}
+
+.row-leave {
+  opacity: 1;
+}
+
+.row-leave.row-leave-active {
+  opacity: 0.01;
+  //transition: opacity 2000ms ease-in;
+}
+
 .NavigationItem {
-	color: #fff;
+  color: #fff;
 }
 
 .content {
-	margin-top: 60px;
+  margin-top: 60px;
 }
 
 .exercise-list img {
-	//height: 100px;
-	width: 100%;
+  //height: 100px;
+  width: 100%;
 }
 
 .sticky {
@@ -16,24 +47,28 @@
 }
 
 a.active {
-	color: #fff!important;
+  color: #fff !important;
   cursor: default;
   text-decoration: underline;
 }
 
 .exercise-detail ol {
-	margin-left: 0;
-	padding-left: 16px;
+  margin-left: 0;
+  padding-left: 16px;
 }
 
 nav form {
-	padding-top: 8px;
+  padding-top: 8px;
 }
 
 nav input {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 .is-current {
-	text-decoration: underline;
+  text-decoration: underline;
+}
+
+.rbc-calendar {
+  min-height: 393px;
 }
