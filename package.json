@@ -2,6 +2,7 @@
   "name": "fitness-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nickfday.github.io/wcc-event-calendar"
   "dependencies": {
     "axios": "^0.16.1",
     "bootstrap": "^3.3.7",
